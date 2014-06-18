@@ -1,0 +1,79 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script src="~/Content/ConsoleResource/src/js/core.basic-1.1.js"></script>
+    <script src="~/Content/ConsoleResource/other/uploaderResource/js/core.uploader2.0.js"></script>
+}
+<script type="text/javascript">
+    function validateForm() {
+        return $("#form1").validate({
+            rules: {
+                //Address: { required: true },
+            },
+            messages: {
+                //Address: { required: "不能为空" },
+            }
+        }).form();
+    };
+    function doSubmit() {
+        if (validateForm()) {
+            $("#form1").submit();
+        }
+    }
+</script>
+<form id="form1" method="POST">
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">标题</div>
+            <input type="text" name="Title" class="inputText" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">图片</div>
+            <div class="uploaderContainer">
+                <script type="text/javascript">
+                    core.uploader.create({
+                        uploadUrl: "/Upload/Image",
+                        swfUrl: "/Content/ConsoleResource/Other/uploaderResource/swf/uploader.swf",
+                        nameRespondElement: "Cover_name",
+                        valueRespondElement: "Cover",
+                        fileFormat: "图片文件:png,jpg,",
+                        fileSize: 10,
+                        defaultUiString: {
+                            btn_select: "图片"
+                        }
+                    });
+                </script>
+                <input id="Cover_name" name="Cover_name" style="display: none" value='' />
+                <input id="Cover" name="Cover" style="display: none" />
+                @*<input type="text" class="inputText" value="这个input替换成上传控件" />*@
+            </div>
+        </div>
+        <div class="tipItem">
+            建议使用256*256大小的图片。
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">简介</div>
+            <textarea class="inputText" name="summary"></textarea>
+        </div>
+    </div>
+
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">包含图片</div>
+            <textarea class="inputText" name="PicsCode"></textarea>
+        </div>
+        <div class="tipItem">
+            在此输入图片编号，多个图片编号之间以英文分号";"隔开。<br />
+            如果要将尚未入库的新图片做成专题，必须先将图片传到图片库内，而后在此录入图片编号。
+        </div>
+    </div>
+
+    <div class="contentItemGroup">
+        <div class="contentItem" onlycontent>
+            <a href="List" onclick="return confirm('你确定要离开编辑页面吗')" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_return.png)">返回</a>
+            <a href="javascript:" onclick="doSubmit();" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_disk.png); float: right">提交</a>
+        </div>
+    </div>
+</form>

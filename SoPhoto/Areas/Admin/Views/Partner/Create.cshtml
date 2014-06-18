@@ -1,0 +1,60 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script src="~/Content/ConsoleResource/src/js/core.basic-1.1.js"></script>
+    <script src="~/Content/ConsoleResource/other/uploaderResource/js/core.uploader2.0.js"></script>
+}
+<script type="text/javascript">
+    var ischeck = false;
+    function doSubmit() {
+        if (ischeck) {
+            $("#form1").submit();
+        }
+    }
+    function checkUser() {
+        var username = $("#username").val();
+        if(username !="")
+        {
+            console.log(username);
+            var data = { 'username': username };
+            core.AJAX(data, "/admin/partner/checkuser", "", onsuccess);
+        }
+    }
+
+    function onsuccess(e) {
+        if(e=="success")
+        {
+            $("#tipitem_username").css({ "display": "none" });
+            console.log("success");
+            ischeck = true;
+        } else {
+            $("#tipitem_username").css({ "display": "block" });
+            console.log("error");
+            ischeck = false;
+        }
+    }
+
+</script>
+<form id="form1" method="POST">
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">用户名</div>
+            <input type="text" id="username" name="UserName" class="inputText" onblur="checkUser();" />
+        </div>
+        <div id="tipitem_username" class="tipItem">
+            用户名已被占用
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">密码</div>
+            <input type="text" class="inputText" name="password" />
+        </div>
+    </div>
+    <div class="contentItemGroup">
+        <div class="contentItem" onlycontent>
+            <a href="List" onclick="return confirm('你确定要离开编辑页面吗')" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_return.png)">返回</a>
+            <a href="javascript:" onclick="doSubmit();" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_disk.png); float: right">提交</a>
+        </div>
+    </div>
+</form>

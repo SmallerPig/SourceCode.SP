@@ -1,0 +1,33 @@
+﻿@{
+    ViewBag.Title = "新闻";
+    ViewBag.NewsNav = "Current";
+}
+@section Head
+{
+    <link href="~/Content/src/css/newsContent.css" rel="stylesheet" />
+}
+@model SoPhoto.Models.NewsDetail
+
+<div id="contentArea">
+    <div id="contentLeftArea">
+        <div id="contentTitle">
+            @Model.News.Title
+        </div>
+        <div id="contentArticle">
+            @MvcHtmlString.Create(Model.News.Content)
+        </div>
+    </div>
+    <div id="contentRightArea">
+        <div id="rightSideAdArea">
+            @{
+                if (Model.Ads != null)
+                {
+                    foreach (var ad in Model.Ads)
+                    {
+                        <a class="adWrapper" href="@ad.LinkAddress"><img class="adImage" src="@ad.Address"></a>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

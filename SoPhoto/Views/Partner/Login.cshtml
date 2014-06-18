@@ -1,0 +1,89 @@
+﻿@{
+    ViewBag.Title = "合作摄影师登录";
+}
+@section Head{
+    <link href="~/Content/src/css/partnerLogin.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="/Scripts/jquery.validate.min.js"></script>
+
+}
+
+<div id="loginArea">
+    <form id="form1">
+        <div id="loginTitle">合作摄影师登录</div>
+        <input class="inputText" id="loginName" name="UserName" />
+        <input class="inputText" id="loginPassword" name="PassWord" type="password" />
+        <a id="loginSubmit" href="Javascript:Submit()"></a>
+    </form>
+
+</div>
+<script>
+    function Submit(){
+        if (validateForm()) {
+            var username = $("#loginName").val().trim();
+            var password = $("#loginPassword").val().trim();
+            if (username == "" || password == "") {
+                alert("请将信息填写完整");
+                return;
+            }
+
+            var data = { 'username': username, 'password': password };
+            var beforesend = function () {
+                console.log("before sending!");
+            };
+
+            var success = function (e) {
+                console.log("return success");
+                if (e == "success") {
+                    window.location.replace("/Partner/Data");
+                } else {
+                    alert("用户名或密码错误！");
+                }
+            };
+
+            AJAX(data, '/Partner/Login', beforesend, success);
+        }
+    }
+    function validateForm() {
+        return $("#form1").validate({
+            rules: {
+                //UserName: { required: true },
+                //PassWord: { required: true },
+            },
+            messages: {
+                //UserName: { required: "不能为空" },
+                //PassWord: { required: "不能为空" },
+            }
+        }).form();
+    };
+    AJAX = function (data, url, beforesendfn, onsuccessfn, onerrorfn, oncomplete) {
+        if (url == undefined || url == "") {
+            $.ajax({
+                type: "POST",
+                cache: false,
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: beforesendfn,
+                success: onsuccessfn,
+                error: onerrorfn,
+                complete: oncomplete
+            });
+        } else {
+            $.ajax({
+                type: "POST",
+                url: url,
+                cache: false,
+                data: JSON.stringify(data),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                beforeSend: beforesendfn,
+                success: onsuccessfn,
+                error: onerrorfn,
+                complete: oncomplete
+            });
+        }
+    };
+
+
+</script>

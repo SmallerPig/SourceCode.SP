@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Head
+{
+    <script src="/Content/ConsoleResource/ckeditor/ckeditor.js" type="text/javascript"></script>
+    <script src="/Content/ConsoleResource/ckfinder/ckfinder.js" type="text/javascript"></script>
+
+}
+@model SoPhoto.Entity.SP_News
+<script type="text/javascript">
+    function validateForm() {
+        return $("#form1").validate({
+            rules: {
+                Title: { required: true },
+            },
+            messages: {
+                Title: { required: "不能为空" },
+            }
+        }).form();
+    };
+    function doSubmit() {
+        if (validateForm()) {
+            BindContent();
+            $("#form1").submit();
+        }
+    }
+</script>
+<form id="form1" method="POST">
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">标题</div>
+            <input type="text" class="inputText" name="Title" value="@Model.Title"/>
+        </div>
+        <div class="contentItem" complexcontent>
+            <textarea id="articleContent" class="input_textarea" width="100%" height="300"></textarea>
+            <input id="articleContentData" name="Content" type="hidden" value="@Model.Content" />
+        </div>
+        <script type="text/javascript">
+            var ckeditorcontent;
+            if (ckeditorcontent) {
+                CKEDITOR.remove(ckeditorcontent);
+            }
+            if (typeof (CKEDITOR) == "undefined") {
+                alert("加载CKEditor失败");
+            }
+            else {
+                ckeditorcontent = CKEDITOR.replace('articleContent');
+                CKFinder.setupCKEditor(ckeditorcontent, '/Content/ConsoleResource/ckfinder/');
+            }
+            function BindContent() {
+                $('#articleContentData').val(ckeditorcontent.getData());
+            }
+            function LoadContent() {
+                ckeditorcontent.setData($('#articleContentData').val());
+            }
+            LoadContent();
+        </script>
+    </div>
+
+    <div class="contentItemGroup">
+        <div class="contentItem" onlycontent>
+            <a href="../List" onclick="return confirm('你确定要离开编辑页面吗')" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_return.png)">返回</a>
+            <a href="javascript:" onclick="doSubmit();" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_disk.png); float: right">提交</a>
+        </div>
+    </div>
+</form>

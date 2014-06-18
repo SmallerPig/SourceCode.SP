@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "新闻";
+    ViewBag.NewsNav = "Current";
+}
+@section Head
+{
+    <link href="~/Content/src/css/newsList.css" rel="stylesheet" />
+}
+@model SoPhoto.Models.NewsIndex
+
+<div id="contentArea">
+    <div id="contentLeftArea">
+        <div id="newsTitleListArea">
+            @{
+                if (Model != null)
+                {
+                    foreach (var news in Model.Newses)
+                    {
+                        <a href="/news/detail/@news.Id" class="newsTitle">@news.Title</a>
+
+                    }
+                }
+            }
+        </div>
+        <div id="pageInfoArea">
+            <a id="gotoFirstPage" href="/news/index">第一页</a>
+            <a id="gotoPrevPage" href="@ViewData["perPage"]">&lt;上一页</a>
+            <input id="currentPageInput" value="@ViewData["pageIndex"]" />
+            <span id="totalPage">/ @ViewData["pageCount"]</span>
+            <a id="gotoNextPage" href="@ViewData["nextPage"]">下一页&gt;</a>
+            <a id="gotoLastPage" href="/news/index?pageIndex=@ViewData["pageCount"]">尾页</a>
+        </div>
+    </div>
+    <div id="contentRightArea">
+        <div id="rightSideAdArea">
+            @{
+                if (Model.Ads != null)
+                {
+                    foreach (var ad in Model.Ads)
+                    {
+                        <a class="adWrapper" href="@ad.LinkAddress"><img class="adImage" src="@ad.Address"></a>
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

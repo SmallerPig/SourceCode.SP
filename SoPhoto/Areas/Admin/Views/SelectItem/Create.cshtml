@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function validateForm() {
+        return $("#form1").validate({
+            rules: {
+                Name: { required: true },
+            },
+            messages: {
+                Name: { required: "不能为空" },
+            }
+        }).form();
+    };
+    function doSubmit() {
+        if (validateForm()) {
+            $("#form1").submit();
+        }
+    }
+</script>
+
+
+
+
+<div class="contentItemGroup">
+    <form id="form1" method="POST">
+        <div class="contentItem">
+            <div class="contentItemTitle">标题：</div>
+            <input type="text" id="Name" name="Name" class="inputText" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">是否多选：</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="IsMulti" class="selectItemInput" value="false" checked />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        否
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="IsMulti" class="selectItemInput" value="true" />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        是
+                    </div>
+                </label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="contentItemGroup">
+    <div class="contentItem" onlycontent>
+        <!--部分内容由于每个项目涉及都不一样，这部分样式没有模板化，以后项目的时候也是直接写在html标签style样式里就行，比较方便修改-->
+        <a href="/admin/selectitem/List" onclick="return confirm('你确定要离开编辑页面吗')" class="inputButton" lefticon style="background-image:url(/Content/ConsoleResource/media/icon_return.png)">返回</a>
+        <a href="javascript:" onclick="doSubmit();" class="inputButton" lefticon style="background-image:url(/Content/ConsoleResource/media/icon_disk.png);float:right">提交</a>
+    </div>
+    <div class="tipItem">
+        使用onlyContent属性创建仅有表单内容而没有标题的内容
+    </div>
+</div>
+

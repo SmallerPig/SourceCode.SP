@@ -1,0 +1,700 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script src="~/Content/ConsoleResource/src/js/core.basic-1.1.js"></script>
+    <script src="~/Content/ConsoleResource/other/uploaderResource/js/core.uploader2.0.js"></script>
+}
+@using System.Web.UI.WebControls
+@model SoPhoto.Entity.SP_Pics
+<script type="text/javascript">
+    function validateForm() {
+        return $("#form1").validate({
+            rules: {
+                Address: { required: true },
+                Title: { required: true },
+                summary: { required: true },
+                author: { required: true },
+                affirming: { required: true },
+                FileSize: { required: true },
+                PicSize: { required: true },
+                CreateDate: { required: true },
+                keywords: { required: true },
+            },
+            messages: {
+                Address: { required: "不能为空" },
+                Title: { required: "不能为空" },
+                summary: { required: "不能为空" },
+                author: { required: "不能为空" },
+                affirming: { required: "不能为空" },
+                FileSize: { required: "不能为空" },
+                PicSize: { required: "不能为空" },
+                CreateDate: { required: "不能为空" },
+                keywords: { required: "不能为空" },
+            }
+        }).form();
+    };
+    function doSubmit() {
+        if (validateForm()) {
+            $("#form1").submit();
+        }
+    }
+</script>
+<form id="form1" method="POST">
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">图片</div>
+            <div class="uploaderContainer">
+                <script type="text/javascript">
+                    core.uploader.create({
+                        uploadUrl: "/Upload/Image",
+                        swfUrl: "/Content/ConsoleResource/Other/uploaderResource/swf/uploader.swf",
+                        defaultName: '@Model.Address',
+                        nameRespondElement: "Address_name",
+                        valueRespondElement: "Address",
+                        fileFormat: "图片文件:jpg,png",
+                        fileSize: 10,
+                        defaultUiString: {
+                            btn_select: "图片"
+                        }
+                    });
+                </script>
+                <input id="Address_name" name="Address_name" style="display: none" value='' />
+                <input id="Address" name="Address" style="display: none" value="@Model.Address"/>
+                @*<input type="text" class="inputText" value="这个input替换成上传控件" />*@
+            </div>
+        </div>
+
+        <div class="tipItem">
+            编辑时只能上传图片文件，建议图片最大宽高512。<br />
+        </div>
+    </div>
+
+    <div class="contentItemGroup">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <div class="contentItem">
+            <div class="contentItemTitle">标题</div>
+            <input type="text" class="inputText" id="Title" name="Title" value="@Model.Title"/>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">编号</div>
+            <input type="text" class="inputText" name="PicCode" value="@Model.PicCode" readonly="true" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">简介</div>
+            <textarea class="inputText" name="summary">@Model.Summary</textarea>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">摄影师</div>
+            <input type="text" class="inputText" name="author" value="@Model.Author" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">肖像权/物权说明</div>
+            <input type="text" class="inputText" name="Affirming" value="@Model.Affirming" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">文件大小</div>
+            <input type="text" class="inputText" name="FileSize" value="@Model.FileSize" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">图片尺寸</div>
+            <input type="text" class="inputText" name="PicSize" value="@Model.PicSize" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">拍摄时间</div>
+            <input type="text" class="inputText" name="CreateDate" value="@Model.CreateDate.ToString("yyyy-MM-dd")" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">图片使用与购买</div>
+            <input type="text" class="inputText" id="UseAndBuy" name="UseAndBuy" value="@Model.UseAndBuy" />
+        </div>
+        <div class="tipItem">
+            以yyyy-mm-dd的格式填写，如：2014-05-08。
+        </div>
+    </div>
+
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">关键词</div>
+            <textarea class="inputText" name="keywords">@Model.KeyWords</textarea>
+        </div>
+        <div class="tipItem">
+            关键词之间以英文分号";"隔开。
+        </div>
+    </div>
+
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">基本类别（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="baseCategory" class="selectItemInput" value="1" @(Model.BaseCategory==1?"checked":"" )/>
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        创意类
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="baseCategory" class="selectItemInput" value="2" @(Model.BaseCategory == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        编辑类
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">创意类子类（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="creativeType" class="selectItemInput" value="1" @(Model.CreativeType == 1 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        版权管理图片（RM）
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="creativeType" class="selectItemInput" value="2" @(Model.CreativeType == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        免版税图片（RF）
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="creativeType" class="selectItemInput" value="3" @(Model.CreativeType == 3 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        <div class="contentItem">
+            <div class="contentItemTitle">编辑类子类（多选）</div>
+            <div class="selectWrapper">
+                @{
+                    List<string> editTypes = Model.Class_Edit.Split(',').ToList();
+                }
+                
+
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="1" @(editTypes.Contains("1") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        纪实
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="2" @(editTypes.Contains("2") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        风光
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="3" @(editTypes.Contains("3") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        自然
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="4" @(editTypes.Contains("4") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        民俗
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="5" @(editTypes.Contains("5") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        历史
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="6" @(editTypes.Contains("6") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        商业广告
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="7" @(editTypes.Contains("7") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        艺术
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="8" @(editTypes.Contains("8") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        实验
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="Class_Edit" class="selectItemInput" value="9" @(editTypes.Contains("9") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="tipItem">
+            选择基本类别后，对于另一类别，可不进行编辑。比如，一张照片属于创意类，在选择“基本类别”为“创意类”后，仅需要指定该照片在创意类里属于什么子类别即可，对于“编辑类子类”的选项可以不管。<br />
+            对于编辑类照片，如果内容不符合任何“编辑类子类”中的选项，那么至少需要选择“其他”选项以优化搜索结果。
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">内容风格（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="class_style" value="1" class="selectItemInput" @(Model.Class_Style == 1 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        照片
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_style" value="2" class="selectItemInput" @(Model.Class_Style == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        插画
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_style" value="3" class="selectItemInput" @(Model.Class_Style == 3 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        插图
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_style" value="4" class="selectItemInput" @(Model.Class_Style == 4 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        地图
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_style" value="0" class="selectItemInput" @(Model.Class_Style == 5 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">拍摄地区（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="class_location" value="1" class="selectItemInput" @(Model.Class_Location == 1 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        中国
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_location" value="2" class="selectItemInput" @(Model.Class_Location == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        亚洲
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_location" value="3" class="selectItemInput" @(Model.Class_Location == 3 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        北美
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_location" value="4" class="selectItemInput" @(Model.Class_Location == 4 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        南美
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_location" value="5" class="selectItemInput" @(Model.Class_Location == 5 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        欧洲
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_location" value="6" class="selectItemInput" @(Model.Class_Location == 6 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        非洲
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_location" value="7" class="selectItemInput" @(Model.Class_Location == 7 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        澳洲
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_location" value="0" class="selectItemInput" @(Model.Class_Location == 0 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">主色调（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="1" class="selectItemInput" @(Model.Class_Color == 1 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        杂彩
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="2" class="selectItemInput" @(Model.Class_Color == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        黑白
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="3" class="selectItemInput" @(Model.Class_Color == 3 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        红色
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="4" class="selectItemInput" @(Model.Class_Color == 4 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        橘黄色
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="5" class="selectItemInput" @(Model.Class_Color == 5 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        黄色
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="6" class="selectItemInput" @(Model.Class_Color == 6 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        绿色
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="7" class="selectItemInput" @(Model.Class_Color == 7 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        青色
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="8" class="selectItemInput" @(Model.Class_Color == 8 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        蓝色
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="9" class="selectItemInput" @(Model.Class_Color == 9 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        紫色
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="10" class="selectItemInput" @(Model.Class_Color == 10 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        粉红色
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_color" value="0" class="selectItemInput" @(Model.Class_Color == 0 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">版式（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="class_layout" value="1" class="selectItemInput" @(Model.Class_Layout == 1 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        方片
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_layout" value="2" class="selectItemInput" @(Model.Class_Layout == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        竖片
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_layout" value="3" class="selectItemInput" @(Model.Class_Layout == 3 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        横片
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_layout" value="4" class="selectItemInput" @(Model.Class_Layout == 4 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        全景
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_layout" value="0" class="selectItemInput" @(Model.Class_Layout == 0 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">拍摄地点（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="class_place" value="1" class="selectItemInput" @(Model.Class_Place == 1 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        户外
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_place" value="2" class="selectItemInput" @(Model.Class_Place == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        室内
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_place" value="3" class="selectItemInput" @(Model.Class_Place == 3 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        影棚
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_place" value="0" class="selectItemInput" @(Model.Class_Place == 0 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">写景方式（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="class_scene" value="1" class="selectItemInput" @(Model.Class_Scene == 1 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        特写
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_scene" value="2" class="selectItemInput" @(Model.Class_Scene == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        近景
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_scene" value="3" class="selectItemInput" @(Model.Class_Scene == 3 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        中景
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_scene" value="4" class="selectItemInput" @(Model.Class_Scene == 4 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        远景
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_scene" value="5" class="selectItemInput" @(Model.Class_Scene == 5 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        航拍
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_scene" value="0" class="selectItemInput" @(Model.Class_Scene == 0 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">人物性别（单选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="class_sex" value="1" class="selectItemInput" @(Model.Class_Sex == 1 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        无人照
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_sex" value="2" class="selectItemInput" @(Model.Class_Sex == 2 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        仅男性
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_sex" value="3" class="selectItemInput" @(Model.Class_Sex == 3 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        仅女性
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_sex" value="4" class="selectItemInput" @(Model.Class_Sex == 4 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        男性和女性
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="class_sex" value="0" class="selectItemInput" @(Model.Class_Sex == 0 ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        其他
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="contentItem">
+            @{
+                IList<string> ages = Model.Class_Age.Split(',').ToList();
+            }
+            
+
+            <div class="contentItemTitle">人物年龄（多选）</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="checkbox" name="class_age" value="1" class="selectItemInput" @(ages.Contains("1") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        无人照
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="class_age" value="2" class="selectItemInput" @(ages.Contains("2") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        婴儿（0-12个月）
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="class_age" value="3" class="selectItemInput" @(ages.Contains("3") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        儿童（1-12岁）
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="class_age" value="4" class="selectItemInput" @(ages.Contains("4") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        少年（13-17岁）
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="class_age" value="5" class="selectItemInput" @(ages.Contains("5") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        青年（18-35岁）
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="class_age" value="6" class="selectItemInput" @(ages.Contains("6") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        中年（36-40岁）
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="class_age" value="7" class="selectItemInput" @(ages.Contains("7") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        中老年（41-59岁）
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="checkbox" name="class_age" value="0" class="selectItemInput" @(ages.Contains("0") ? "checked" : "") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        老年（60岁以上）
+                    </div>
+                </label>
+            </div>
+        </div>
+        
+        
+        
+        
+          
+        
+        
+
+    </div>
+
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">暂不发布</div>
+            <div class="selectWrapper">
+                <label class="selectItem">
+                    <input type="radio" name="IsLock" class="selectItemInput" value="true" @(Model.IsLock?"checked":"") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        是
+                    </div>
+                </label>
+                <label class="selectItem">
+                    <input type="radio" name="IsLock" class="selectItemInput" value="false" @(Model.IsLock ? "" : "checked") />
+                    <span class="selectItemInputMarker"></span>
+                    <div class="selectItemContent">
+                        否
+                    </div>
+                </label>
+            </div>
+        </div>
+        <div class="tipItem">
+            “暂不发布”的图片不会在网站的图片列表和搜索结果中出现。<br />
+            对于批量上传的图片，我们建议将“暂不发布”状态设为“是”并提交，而后逐一处理这些图片中个别需要修改的信息并将“暂不发布”设置为“否”，最后提交完成图片信息的编辑。
+        </div>
+        <div class="contentItem" onlycontent>
+            <a href="../ConsoleList" onclick="return confirm('你确定要离开编辑页面吗')" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_return.png)">返回</a>
+            <a href="javascript:" onclick="doSubmit();" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_disk.png); float: right">提交</a>
+        </div>
+    </div>
+
+</form>

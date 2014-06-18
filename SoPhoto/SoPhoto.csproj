@@ -1,0 +1,1430 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{00CF54DA-0A5D-42D7-AB08-91C0958977FB}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoPhoto</RootNamespace>
+    <AssemblyName>SoPhoto</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CKFinder, Version=2.4.0.2631, Culture=neutral, PublicKeyToken=579e7adc719a1423, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\CKFinder.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="RY.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\RY.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.30506.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.30506.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.30506.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.30506.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ADController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BannerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ConsoleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DemoController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PartnerController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PartnerSaleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\PicController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SelectConditionController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SelectItemController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TopicController.cs" />
+    <Compile Include="Areas\Admin\Models\PicModel.cs" />
+    <Compile Include="Areas\Admin\Models\PicSelect.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\PartnerController.cs" />
+    <Compile Include="Controllers\PicsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TopicController.cs" />
+    <Compile Include="Controllers\Upload.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Home.cs" />
+    <Compile Include="Models\ColumnModel.cs" />
+    <Compile Include="Models\NewsDetail.cs" />
+    <Compile Include="Models\NewsIndex.cs" />
+    <Compile Include="Models\PartnerData.cs" />
+    <Compile Include="Models\SearchModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\CKFinder.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Microsoft.Web.Mvc.FixedDisplayModes.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\RY.Common.dll" />
+    <Content Include="bin\RY.Common.pdb" />
+    <Content Include="bin\RY.Common.xml" />
+    <Content Include="bin\System.Net.Http.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Net.Http.WebRequest.dll" />
+    <Content Include="bin\System.Net.Http.WebRequest.xml" />
+    <Content Include="bin\System.Net.Http.xml" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Providers.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="bin\zh-Hans\EntityFramework.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Net.Http.Formatting.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Net.Http.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Net.Http.WebRequest.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Http.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Http.WebHost.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Mvc.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Optimization.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Providers.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.Razor.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.Razor.resources.dll" />
+    <Content Include="bin\zh-Hans\System.Web.WebPages.resources.dll" />
+    <Content Include="Content\ConsoleResource\ckeditor\adapters\jquery.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor.asp" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor_basic.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor_basic_source.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor_source.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\config.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\contents.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\images\spacer.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\af.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ar.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\bg.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\bn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\bs.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ca.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\cs.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\cy.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\da.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\de.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\el.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\en-au.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\en-ca.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\en-gb.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\en.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\eo.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\es.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\et.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\eu.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\fa.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\fi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\fo.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\fr-ca.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\fr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\gl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\gu.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\he.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\hi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\hr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\hu.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\is.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\it.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ja.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ka.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\km.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ko.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\lt.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\lv.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\mk.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\mn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ms.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\nb.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\nl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\no.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\pl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\pt-br.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\pt.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ro.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ru.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\sk.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\sl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\sr-latn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\sr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\sv.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\th.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\tr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\ug.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\uk.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\vi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\zh-cn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\zh.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\_languages.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\lang\_translationstatus.txt" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\cs.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\cy.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\da.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\de.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\el.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\en.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\eo.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\fa.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\fi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\fr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\gu.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\he.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\it.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\mk.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\nb.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\nl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\no.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\tr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\ug.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\vi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\zh-cn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\a11yhelp\lang\_translationstatus.txt" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\adobeair\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\ajax\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\autogrow\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\bbcode\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\bg.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\cs.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\cy.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\da.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\de.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\el.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\en.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\eo.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\et.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\fa.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\fi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\fr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\gu.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\he.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\hr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\it.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\nb.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\nl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\no.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\pl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\tr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\ug.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\uk.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\vi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\zh-cn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\lang\_translationstatus.txt" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\devtools\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\div\dialogs\div.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\docprops\dialogs\docprops.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\docprops\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\find\dialogs\find.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\flash\dialogs\flash.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\flash\images\placeholder.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\dialogs\button.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\dialogs\form.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\dialogs\radio.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\dialogs\select.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\dialogs\textarea.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\dialogs\textfield.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\iframedialog\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\link\images\anchor.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\pastetext\dialogs\pastetext.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\dialogs\placeholder.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\bg.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\cs.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\cy.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\da.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\de.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\el.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\en.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\eo.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\et.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\fa.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\fi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\fr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\he.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\hr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\it.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\nb.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\nl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\no.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\pl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\tr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\ug.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\uk.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\vi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\zh-cn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\lang\_translationstatus.txt" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\placeholder.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\placeholder\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\cs.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\cy.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\de.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\en.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\eo.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\et.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\fa.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\fi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\fr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\hr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\it.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\nb.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\nl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\no.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\tr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\ug.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\zh-cn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\specialchar\lang\_translationstatus.txt" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\stylesheetparser\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\styles\styles\default.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\tableresize\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\templates\dialogs\templates.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\templates\templates\default.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\dialogs\uicolor.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\bg.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\cs.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\cy.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\da.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\de.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\el.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\en.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\eo.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\et.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\fa.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\fi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\fr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\he.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\hr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\it.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\mk.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\nb.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\nl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\no.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\pl.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\tr.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\ug.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\uk.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\vi.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\zh-cn.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\lang\_translationstatus.txt" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\uicolor.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\yui\assets\hue_bg.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\yui\assets\hue_thumb.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\yui\assets\picker_mask.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\yui\assets\picker_thumb.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\yui\assets\yui.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\uicolor\yui\yui.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\plugins\xml\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\dialog.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\editor.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\icons.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\icons_rtl.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\images\dialog_sides.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\images\dialog_sides.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\images\dialog_sides_rtl.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\images\mini.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\images\noimage.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\images\sprites.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\images\sprites_ie6.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\images\toolbar_start.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\skin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\kama\templates.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\dialog.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\editor.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\icons.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\icons_rtl.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\images\dialog_sides.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\images\dialog_sides.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\images\dialog_sides_rtl.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\images\mini.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\images\noimage.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\images\sprites.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\images\sprites_ie6.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\skin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\office2003\templates.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\dialog.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\editor.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\icons.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\icons_rtl.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\images\dialog_sides.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\images\dialog_sides.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\images\dialog_sides_rtl.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\images\mini.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\images\noimage.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\images\sprites.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\images\sprites_ie6.png" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\images\toolbar_start.gif" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\skin.js" />
+    <Content Include="Content\ConsoleResource\ckeditor\skins\v2\templates.css" />
+    <Content Include="Content\ConsoleResource\ckeditor\themes\default\theme.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\changelog.txt" />
+    <Content Include="Content\ConsoleResource\ckfinder\ckfinder.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\ckfinder.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\ckfinder_v1.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\config.ascx" />
+    <Content Include="Content\ConsoleResource\ckfinder\config.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\connector.aspx" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\bg.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\cs.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\cy.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\da.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\de.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\el.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\en.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\eo.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\es-mx.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\es.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\et.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\fa.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\fi.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\fr.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\gu.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\he.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\hi.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\hr.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\hu.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\it.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\ja.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\lt.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\lv.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\nb.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\nl.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\nn.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\no.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\pl.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\pt-br.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\ro.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\ru.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\sk.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\sl.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\sv.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\tr.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\vi.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\zh-cn.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\core\connector\aspx\lang\zh-tw.xml" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\001.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\002.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\003.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\004.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\005.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\006.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\007.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\008.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\009.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\010.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\011.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\012.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\013.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\014.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\015.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\header.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\license.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\suggestions.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\files\toc.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\cs\index.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\001.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\002.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\003.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\004.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\005.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\006.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\007.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\008.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\009.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\010.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\011.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\012.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\013.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\014.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\015.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\header.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\license.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\suggestions.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\files\toc.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\en\index.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\001.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\002.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\003.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\004.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\005.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\006.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\007.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\008.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\009.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\010.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\011.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\012.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\013.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\header.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\001.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\002.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\003.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\004.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\005.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\006.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\007.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\008.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\009.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\010.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\011.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\012.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\013.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\014.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\015.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\016.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\017.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\018.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\019.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\images\020.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\license.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\suggestions.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\files\toc.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es-mx\index.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\001.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\002.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\003.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\004.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\005.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\006.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\007.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\008.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\009.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\010.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\011.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\012.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\013.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\header.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\001.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\002.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\003.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\004.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\005.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\006.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\007.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\008.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\009.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\010.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\011.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\012.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\013.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\014.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\015.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\016.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\017.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\018.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\019.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\images\020.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\license.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\suggestions.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\files\toc.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\es\index.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\002.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\003.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_basket_clear.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_basket_drag.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_basket_empty.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_basket_file_menu.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_basket_remove.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_already_exists.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_copied.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_delete.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_display_01.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_display_02.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_display_03.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_display_04.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_drag_copy.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_drag_move.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_menu.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_moved.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_pane.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_rename.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_resize.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_resize_both.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_resize_new.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_resize_overwrite.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_resize_resized.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_resize_thumbnails.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_select_hovered.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_select_selected.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_select_unselected.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_view_list.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_file_view_thumbnails.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_collapse.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_copied_from_basket.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_delete.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_expand.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_loading.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_menu.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_moved_from_basket.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_new.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_pane.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_rename.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_folder_select.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_interface.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_menu_arrow.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_menu_arrows.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_resize_lock.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_resize_reset.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_resize_unlock.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_settings.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_status_empty.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_status_file.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_status_folder.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_toolbar.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_toolbar_help.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_toolbar_refresh.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_upload_01.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_upload_03.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_upload_04.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_upload_09.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\images\CKFinder_upload_10.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\other\help.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\files\other\help.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\001.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\002.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\003.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\004.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\005.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\006.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\007.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\008.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\009.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\010.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\011.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\012.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\013.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\header.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\001.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\002.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\003.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\004.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\005.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\006.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\007.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\008.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\009.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\010.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\011.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\012.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\013.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\014.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\015.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\016.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\017.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\018.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\019.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\images\020.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\license.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\suggestions.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\files\toc.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\fi\index.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\001.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\002.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\003.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\004.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\005.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\006.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\007.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\008.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\009.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\010.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\011.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\012.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\013.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\header.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\001.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\002.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\003.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\004.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\005.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\006.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\007.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\008.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\009.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\010.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\011.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\012.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\013.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\014.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\015.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\016.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\017.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\018.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\019.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\images\020.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\license.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\suggestions.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\files\toc.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\lt\index.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\001.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\002.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\003.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\004.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\005.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\006.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\007.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\008.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\009.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\010.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\011.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\012.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\013.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\014.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\015.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\header.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\license.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\suggestions.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\files\toc.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\help\pl\index.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\install.txt" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\bg.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\cs.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\cy.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\da.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\de.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\el.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\en.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\eo.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\es-mx.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\es.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\et.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\fa.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\fi.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\fr.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\gu.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\he.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\hi.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\hr.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\hu.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\it.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\ja.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\lt.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\lv.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\nb.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\nl.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\nn.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\no.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\pl.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\pt-br.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\ro.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\ru.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\sk.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\sl.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\sv.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\tr.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\vi.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\zh-cn.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\zh-tw.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\lang\_translationstatus.txt" />
+    <Content Include="Content\ConsoleResource\ckfinder\license.txt" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\dummy\lang\en.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\dummy\lang\pl.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\dummy\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\bin\Debug\CKFinder_FileEditor.dll" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\bin\Debug\CKFinder_FileEditor.pdb" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\bin\Release\CKFinder_FileEditor.dll" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\bin\Release\CKFinder_FileEditor.pdb" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\contrib\csharp\css\csharpcolors.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\contrib\csharp\js\parsecsharp.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\contrib\csharp\js\tokenizecsharp.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\css\csscolors.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\css\docs.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\css\font.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\css\jscolors.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\css\sparqlcolors.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\css\xmlcolors.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\codemirror.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\editor.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\highlight.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\mirrorframe.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\parsecss.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\parsedummy.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\parsehtmlmixed.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\parsejavascript.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\parsesparql.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\parsexml.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\select.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\stringstream.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\tokenize.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\tokenizejavascript.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\undo.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\js\util.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\flashupload\flash\Uploader.swf" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\flashupload\Uploader.html" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\colorbox.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\border.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\controls.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\ie6\borderBottomCenter.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\ie6\borderBottomLeft.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\ie6\borderBottomRight.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\ie6\borderMiddleLeft.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\ie6\borderMiddleRight.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\ie6\borderTopCenter.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\ie6\borderTopLeft.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\ie6\borderTopRight.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\loading.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\loading_background.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\images\overlay.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\jquery.colorbox-min.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\jquery.min.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\gallery\colorbox\license.txt" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\imageresize\bin\Debug\CKFinder_ImageResize.dll" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\imageresize\bin\Debug\CKFinder_ImageResize.pdb" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\imageresize\bin\Release\CKFinder_ImageResize.dll" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\imageresize\bin\Release\CKFinder_ImageResize.pdb" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\imageresize\images\mini.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\imageresize\plugin.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\watermark\bin\Debug\CKFinder_Watermark.dll" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\watermark\bin\Debug\CKFinder_Watermark.pdb" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\watermark\bin\Release\CKFinder_Watermark.dll" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\watermark\bin\Release\CKFinder_Watermark.pdb" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\watermark\logo.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\app.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\host.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\ckffolder.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\ckffolderopened.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\ckfminus.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\ckfnothumb.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\ckfplus.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\ai.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\avi.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\bmp.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\cs.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\default.icon.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\dll.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\doc.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\docx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\exe.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\fla.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\gif.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\jpg.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\js.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\mdb.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\mp3.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\ogg.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\pdf.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\ppt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\pptx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\rdp.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\swf.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\swt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\txt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\vsd.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\xls.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\xlsx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\xml.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\16\zip.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\ai.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\avi.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\bmp.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\cs.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\default.icon.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\dll.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\doc.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\docx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\exe.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\fla.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\gif.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\jpg.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\js.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\mdb.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\mp3.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\ogg.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\ogg.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\pdf.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\ppt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\pptx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\rdp.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\swf.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\swt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\txt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\vsd.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\xls.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\xlsx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\xml.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\icons\32\zip.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\loaders\16x16.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\loaders\32x32.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\spacer.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\sprites.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\sprites_ie6.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\toolbar\add.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\toolbar\clear_basket.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\toolbar\delete.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\toolbar\download.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\toolbar\help.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\toolbar\refresh.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\toolbar\settings.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\images\toolbar\view.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\richcombo.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\skin.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\kama\uipanel.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\app.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\host.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\ckffolder.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\ckffolderopened.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\ckfminus.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\ckfnothumb.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\ckfplus.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\dialog_sides.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\dialog_sides.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\dialog_sides_rtl.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\ai.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\avi.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\bmp.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\cs.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\default.icon.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\dll.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\doc.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\docx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\exe.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\fla.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\gif.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\jpg.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\js.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\mdb.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\mp3.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\pdf.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\ppt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\pptx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\rdp.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\swf.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\swt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\txt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\vsd.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\xls.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\xlsx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\xml.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\16\zip.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\ai.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\avi.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\bmp.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\cs.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\default.icon.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\dll.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\doc.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\docx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\exe.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\fla.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\gif.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\jpg.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\js.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\mdb.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\mp3.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\pdf.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\ppt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\pptx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\rdp.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\swf.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\swt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\txt.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\vsd.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\xls.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\xlsx.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\xml.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\icons\32\zip.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\loaders\16x16.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\loaders\32x32.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\spacer.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\sprites.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\sprites_ie6.png" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar\add.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar\clear_basket.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar\delete.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar\download.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar\help.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar\refresh.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar\settings.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar\view.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\images\toolbar_start.gif" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\richcombo.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\skin.js" />
+    <Content Include="Content\ConsoleResource\ckfinder\skins\v1\uipanel.css" />
+    <Content Include="Content\ConsoleResource\ckfinder\translations.txt" />
+    <Content Include="Content\ConsoleResource\src\css\component_dynTab.css" />
+    <Content Include="Content\ConsoleResource\src\css\component_input.css" />
+    <Content Include="Content\ConsoleResource\src\css\component_list.css" />
+    <Content Include="Content\ConsoleResource\src\css\component_select.css" />
+    <Content Include="Content\ConsoleResource\src\css\component_tree.css" />
+    <Content Include="Content\ConsoleResource\src\css\iframeContent.css" />
+    <Content Include="Content\ConsoleResource\src\css\login.css" />
+    <Content Include="Content\ConsoleResource\src\css\main.css" />
+    <Content Include="Content\ConsoleResource\src\css\newsContent.css" />
+    <Content Include="Content\ConsoleResource\src\css\newsList.css" />
+    <Content Include="Content\ConsoleResource\src\css\partnerData.css" />
+    <Content Include="Content\ConsoleResource\src\css\partnerLogin.css" />
+    <Content Include="Content\ConsoleResource\src\css\partnerPasswordChange.css" />
+    <Content Include="Content\ConsoleResource\src\js\component_tree.js" />
+    <Content Include="Content\ConsoleResource\src\js\core.basic-1.1.js" />
+    <Content Include="Content\ConsoleResource\src\js\List.js" />
+    <Content Include="Content\ConsoleResource\src\js\login.js" />
+    <Content Include="Content\ConsoleResource\src\js\main.js" />
+    <Content Include="Content\ConsoleResource\src\media\icon_checked.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_checked2.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_close_small.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_close_small_hover.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_delete.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_disk.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_edit.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_enterDoor_big.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_file.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_folder.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_folderOpen.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_folderWithFile.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_lock.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_magnifier.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_plus.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_refresh_small.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_refresh_small_hover.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_return.png" />
+    <Content Include="Content\ConsoleResource\src\media\icon_user.png" />
+    <Content Include="Content\ConsoleResource\other\uploaderResource\js\core.uploader2.0.js" />
+    <Content Include="Content\ConsoleResource\other\uploaderResource\swf\uploader - gray.swf" />
+    <Content Include="Content\ConsoleResource\other\uploaderResource\swf\uploader.swf" />
+    <Content Include="Content\src\css\home.css" />
+    <Content Include="Content\src\css\imageDetail.css" />
+    <Content Include="Content\src\css\imageSearch.css" />
+    <Content Include="Content\src\css\newsContent.css" />
+    <Content Include="Content\src\css\newsList.css" />
+    <Content Include="Content\src\css\partnerData.css" />
+    <Content Include="Content\src\css\partnerLogin.css" />
+    <Content Include="Content\src\css\partnerPasswordChange.css" />
+    <Content Include="Content\src\css\pub.css" />
+    <Content Include="Content\src\css\topicContent.css" />
+    <Content Include="Content\src\css\topicList.css" />
+    <Content Include="Content\src\js\home.js" />
+    <Content Include="Content\src\js\imageSearch.js" />
+    <Content Include="Content\src\media\bg1.png" />
+    <Content Include="Content\src\media\bg2.png" />
+    <Content Include="Content\src\media\checkBoxBg.png" />
+    <Content Include="Content\src\media\colorBg_blackWhite.png" />
+    <Content Include="Content\src\media\colorBg_colorful.png" />
+    <Content Include="Content\src\media\doubleArrowUp.png" />
+    <Content Include="Content\src\media\footbg1.png" />
+    <Content Include="Content\src\media\footbg2.png" />
+    <Content Include="Content\src\media\headbg1.png" />
+    <Content Include="Content\src\media\headbg2.png" />
+    <Content Include="Content\src\media\logo.png" />
+    <Content Include="Content\src\media\markBg.png" />
+    <Content Include="Content\src\media\menuButtonBg.png" />
+    <Content Include="Content\src\media\searchButton.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Areas\Admin\Views\Web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Content\ConsoleResource\ckeditor\.htaccess" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor.pack" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor.php" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor_php4.php" />
+    <Content Include="Content\ConsoleResource\ckeditor\ckeditor_php5.php" />
+    <Content Include="Content\ConsoleResource\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
+    <Content Include="Content\ConsoleResource\ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Admin\Views\Console\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Console\Main.cshtml" />
+    <Content Include="Areas\Admin\Views\Demo\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Demo\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SelectItem\List.cshtml" />
+    <Content Include="Areas\Admin\Views\SelectCondition\ListByItem.cshtml" />
+    <Content Include="Areas\Admin\Views\SelectItem\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\SelectItem\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SelectCondition\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\SelectCondition\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Pic\ConsoleList.cshtml" />
+    <Content Include="Areas\Admin\Views\Pic\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Pic\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Topic\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Banner\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Banner\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Banner\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AD\List.cshtml" />
+    <Content Include="Areas\Admin\Views\AD\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AD\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\News\List.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Partner\List.cshtml" />
+    <Content Include="Areas\Admin\Views\Partner\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Partner\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\PartnerSale\List.cshtml" />
+    <Content Include="Areas\Admin\Views\PartnerSale\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\PartnerSale\Edit.cshtml" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="readme.txt" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\simple-validator.min.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Topic\Index.cshtml" />
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
+    <Content Include="Views\Pics\Search.cshtml" />
+    <Content Include="Views\Topic\Content.cshtml" />
+    <Content Include="Views\Pics\Detail.cshtml" />
+    <Content Include="Views\News\Detail.cshtml" />
+    <Content Include="Views\Partner\Login.cshtml" />
+    <Content Include="Views\Partner\Data.cshtml" />
+    <Content Include="Views\Partner\ChangePassword.cshtml" />
+    <Content Include="Views\Pics\PicCode.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\src\other\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SoPhoto.BLL\SoPhoto.BLL.csproj">
+      <Project>{b44c820d-98d2-4e86-9816-15f3f64b5751}</Project>
+      <Name>SoPhoto.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SoPhoto.Entity\SoPhoto.Entity.csproj">
+      <Project>{caabcb44-d810-4071-8825-95509da8259c}</Project>
+      <Name>SoPhoto.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>17082</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:17040/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "专题";
+    ViewBag.TopicNav = "Current";
+}
+@section Head{
+<link rel="stylesheet" type="text/css" href="/Content/src/css/topicContent.css">
+}
+@using SoPhoto.BLL
+@model SoPhoto.Entity.SP_Topic
+<div id="contentArea">
+    <div id="contentLeftArea">
+        <div id="topicCoverImageWrapper">
+            <img src="@Model.Cover" id="topicCoverImage" />
+        </div>
+        <div id="topicTitle">
+            @Model.Title
+        </div>
+        <div id="topicBrief">
+            @Model.Summary
+        </div>
+    </div>
+
+    <div id="contentRightArea">
+        <div id="topicImageArea">
+            @{
+                if (Model.PicsCode != null)
+                {
+                    string[] pics = Model.PicsCode.Split(';');
+                    SoPhoto.BLL.Pics helper = new Pics();
+                    foreach (var pic in pics)
+                    {
+                        try
+                        {
+                            SoPhoto.Entity.SP_Pics p = helper.GetByPicCode(pic);
+                            if (p != null && !p.IsLock)
+                            {
+                                <a class="topicImageItem" href="/Pics/Detail/@p.Id" target="_blank">
+                                    <div class="topicImageImageWrapper">
+                                        <div class="topicImageImage" style="background-image:url('@p.Cover');"></div>
+                                    </div>
+                                    <div class="topicImageInfoWrapper">
+                                        <div class="topicImageInfoTitle">@p.Title</div>
+                                        <div class="topicImageInfoOther">
+                                            <span class="markText">摄影师：</span><span class="contentText">@p.Title</span>
+                                        </div>
+                                        <div class="topicImageInfoOther">
+                                            <span class="markText">类　别：</span><span class="contentText">@(p.BaseCategory == 1 ? "创意类" : "编辑类")</span>
+                                        </div>
+                                        <div class="topicImageInfoOther">
+                                            <span class="markText">授　权：</span><span class="contentText">@(p.CreativeType == 1 ? "有" : "无")授权</span>
+                                        </div>
+                                        <div class="topicImageInfoOther">
+                                            <span class="markText">编　号：</span><span class="contentText">@p.PicCode</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+                }
+            }
+
+        </div>
+        <div id="topicImagePageInfoArea">
+            <a id="gotoFirstPage" href="#">第一页</a>
+            <a id="gotoPrevPage" href="#">&lt;上一页</a>
+            <input id="currentPageInput" value="1" />
+            <span id="totalPage">/ 1</span>
+            <a id="gotoNextPage" href="#">下一页&gt;</a>
+            <a id="gotoLastPage" href="#">尾页</a>
+        </div>
+    </div>
+</div>

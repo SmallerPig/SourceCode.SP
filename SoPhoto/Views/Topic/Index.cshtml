@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "专题";
+    ViewBag.TopicNav = "Current";
+
+}
+@section Head{
+    <link rel="stylesheet" type="text/css" href="/Content/src/css/topicList.css">
+}
+@model IEnumerable<SoPhoto.Entity.SP_Topic>
+<div id="contentArea">
+    @{
+        if (Model != null)
+        {
+            foreach (var topic in Model)
+            {
+                <a class="topicUnit" href="/Topic/Content/@topic.Id">
+                    <img class="topicImage" src="@topic.Cover" />
+                    <div class="topicBrief">
+                        @topic.Summary
+                    </div>
+                    <div class="topicTitle">@topic.Title</div>
+                </a>
+
+            }
+        }
+    }
+    
+    
+    
+</div>
+<div id="pageInfoArea">
+    <a id="gotoFirstPage" href="/news/index">第一页</a>
+    <a id="gotoPrevPage" href="@ViewData["perPage"]">&lt;上一页</a>
+    <input id="currentPageInput" value="@ViewData["pageIndex"]" onkeydown="if (event.keyCode == 13) { jumpPage() }" />
+    <span id="totalPage">/ @ViewData["pageCount"]</span>
+    <a id="gotoNextPage" href="@ViewData["nextPage"]">下一页&gt;</a>
+    <a id="gotoLastPage" href="/news/index?pageIndex=@ViewData["pageCount"]">尾页</a>
+</div>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script>
+        function jumpPage() {
+            var pageindex = $("#currentPageInput").val();
+            window.location.replace('/topic/index?pageindex=' + pageindex);
+        };
+    </script>

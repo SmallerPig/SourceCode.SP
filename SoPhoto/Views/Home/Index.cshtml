@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "首页";
+    ViewBag.HomeNav = "Current";
+}
+@section Head
+{
+<link rel="stylesheet" type="text/css" href="/content/src/css/home.css">
+    <script src="/content/src/js/home.js"></script>
+<script src="/Scripts/jquery-1.8.2.min.js"></script>
+
+}
+@model SoPhoto.Models.Home
+
+<div class="contentRow">
+    <div id="pictureSearchArea">
+        <div id="pictureSearchAreaTitle">图片搜索</div>
+        <div id="pictureSearchAreaContentWrapper">
+            <input id="pictureSearchInput" onkeydown="if (event.keyCode == 13) { doSubmit() }" class="inputText" placeholder="输入关键词或图片编号" />
+            <a id="pictureSearchSubmit" href="javascript:"></a>
+            <a id="pictureSearchLink" href="/Pics/Search">高级搜索</a>
+        </div>
+    </div>
+</div>
+
+<div class="contentRow">
+    <div id="slidePicArea">
+        <div id="slidePicWrapper">
+            @{
+                if (Model.Banners!=null)
+                {
+                    foreach (var banner in Model.Banners)
+                    {
+                    <a href="@banner.LinkAddress">
+                        <img class="slidePicItem" src="@banner.Address" />
+                    </a>
+                    }
+                }
+            }
+
+        </div>
+        <div id="slidePicInfoArea">
+            <!--<div class="slidePicItemMark"></div>-->
+        </div>
+    </div>
+    <div id="newsArea">
+        <div class="titleArea">
+            <div class="titleText">新闻与活动</div>
+            <a class="moreLink" href="/news/index">更多&gt;</a>
+        </div>
+        <div class="contentArea">
+            @{
+                if (Model.Newses != null)
+                {
+                    foreach (var news in Model.Newses)
+                    {
+                        <a href="/News/Detail/@news.Id" class="newsTitle">@news.Title</a>
+
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<div class="contentRow">
+    <div id="topicArea">
+        <div class="titleArea">
+            <div class="titleText">专题</div>
+            <a class="moreLink" href="/topic">更多&gt;</a>
+        </div>
+        <div class="contentArea">
+            @{
+                if (Model.Banners !=null)
+                {
+                    foreach (var topic in Model.Topics)
+                    {
+                        <a class="topicItem" href="/topic/Content/@topic.Id">
+                            <img class="topicImage" src="@topic.Cover" />
+                            <div class="textTitle">@topic.Title</div>
+                            <div class="textBrief">@topic.Summary</div>
+                        </a>
+                    }
+                }
+            }
+        </div>
+    </div>
+    <div id="rightSideAdArea">
+        @{
+            if (Model.Ads!=null)
+            {
+                foreach (var ad in Model.Ads)
+                {
+                    <a class="adWrapper" href="@ad.LinkAddress"><img class="adImage" src="@ad.Address"></a>
+                }
+            }
+        }
+    </div>
+</div>
+<script>
+    $("#pictureSearchSubmit").click(doSubmit);
+    function doSubmit() {
+        var keyword = $("#pictureSearchInput").val();
+        if (keyword != "") {
+            window.location.replace("/Pics/Search?keyword=" + keyword);
+        }
+    }
+
+</script>

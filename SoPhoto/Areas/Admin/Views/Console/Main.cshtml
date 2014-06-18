@@ -1,0 +1,87 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>平台主页</title>
+    <link rel="stylesheet" type="text/css" href="/Content/ConsoleResource/src/css/component_input.css">
+    <link rel="stylesheet" type="text/css" href="/Content/ConsoleResource/src/css/component_tree.css">
+    <link rel="stylesheet" type="text/css" href="/Content/ConsoleResource/src/css/component_dynTab.css">
+    <link rel="stylesheet" type="text/css" href="/Content/ConsoleResource/src/css/main.css">
+    <script src="/Content/ConsoleResource/src/js/component_tree.js"></script>
+    <script src="/Content/ConsoleResource/src/js/main.js"></script>
+</head>
+
+<body>
+
+    <div id="leftWrapper">
+        <div id="menuArea">
+            <div id="menuTreeWrapper" class="treeWrapper">
+                <!--在此处编辑菜单栏-->
+                
+
+                                @*<div class="treePack">阿三大声道</div>
+        <span class="treePackContent">
+            <a class="treeItem" link="http://www.baidu.com">百度</a>
+            <a class="treeItem" link="http://www.google.com">谷歌</a>
+            <div class="treePack">阿三大声道</div>
+            <span class="treePackContent">
+                <a class="treeItem" link="http://weibo.com">微博</a>
+                <a class="treeItem" link="/admin/Demo/List">阿三大声道</a>
+                <a class="treeItem" link="subPages/test.html">阿三大声道</a>
+            </span>
+            <div class="treePack">阿三大声道</div>
+            <span class="treePackContent">
+                <a class="treeItem" link="subPages/test.html">阿三大声道</a>
+                <a class="treeItem" link="subPages/test.html">阿三大声道</a>
+                <a class="treeItem" link="subPages/test.html">阿三大声道</a>
+            </span>
+        </span>
+
+        <a class="treeItem" link="subPages/contentSample1.html">contentSample1</a>
+        <a class="treeItem" link="subPages/contentSample2.html">contentSample2</a>
+
+                                *@
+                <div class="treePack">图片管理</div>
+                <span class="treePackContent">
+                    <a class="treeItem" link="/Admin/Pic/ConsoleList">图片列表</a>
+                </span>
+                <div class="treePack">专题管理</div>
+                <span class="treePackContent">
+                    <a class="treeItem" link="/Admin/Topic/List">专题列表</a>
+                </span>
+                <div class="treePack">合作摄影师</div>
+                <span class="treePackContent">
+                    <a class="treeItem" link="/Admin/Partner/List">摄影师列表</a>
+                    <a class="treeItem" link="/Admin/PartnerSale/List">销售列表</a>
+                </span>
+                <div class="treePack">新闻活动管理</div>
+                <span class="treePackContent">
+                    <a class="treeItem" link="/Admin/News/List">新闻活动列表</a>
+                </span>                
+
+                <div class="treePack">Banner管理</div>
+                <span class="treePackContent">
+                    <a class="treeItem" link="/Admin/Banner/List">Banner列表</a>
+                </span>
+                <div class="treePack">广告管理</div>
+                <span class="treePackContent">
+                    <a class="treeItem" link="/Admin/AD/List">广告列表</a>
+                </span>                
+
+            </div>
+        </div>
+    </div>
+
+    <div id="rightWrapper">
+        <div id="tabArea">
+            <div id="tabInnerArea" class="dynTabWrapper"></div>
+        </div>
+        <div id="contentArea">
+            <!--
+            <iframe class="contentIframe" />
+            -->
+        </div>
+    </div>
+
+</body>
+</html>

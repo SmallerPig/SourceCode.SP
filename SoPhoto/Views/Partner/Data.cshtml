@@ -1,0 +1,39 @@
+﻿@{
+    ViewBag.Title = "合作摄影师";
+}
+@model SoPhoto.Models.PartnerData
+@section Head{
+    <link href="~/Content/src/css/partnerData.css" rel="stylesheet" />
+}
+<div id="contentArea">
+    <div id="partnerInfo">欢迎你，@Model.Partner.UserName，共有 @(Model.Sales==null?0:Model.Sales.Count()): 笔和你有关的图片销售记录。如果要修改账号密码，<a id="changePasswordLink" href="/Partner/ChangePassword">点击这里</a>。</div>
+    
+    
+    
+    
+
+    <div id="partnerImageSaleTitleArea">
+        <div id="imageSaleTimeTitle">售出时间</div>
+        <div id="imageSaleCodeTitle">图片编号</div>
+        <div id="imageSaleIncomeTitle">您的应得收益</div>
+        <div id="imageSaleLinkTitle">图片链接</div>
+    </div>
+    <div id="partnerImageSaleInfo">
+        @{
+            if (Model.Sales != null)
+            {
+                foreach (var partnerSale in Model.Sales)
+                {
+                    <div class="imageSaleItem">
+                        <div class="imageSaleTime">@partnerSale.SaleTime.ToString("yyyy-MM-dd")</div>
+                        <div class="imageSaleCode">@partnerSale.PicCode</div>
+                        <div class="imageSaleIncome">@partnerSale.Price</div>
+                        <a class="imageSaleLink" href="/Pics/PicCode?code=@partnerSale.PicCode" target="_blank">...</a>
+                    </div>
+                }
+            }
+        }
+
+    </div>
+</div>
+

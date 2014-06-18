@@ -1,0 +1,30 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>登录</title>
+    <link rel="stylesheet" type="text/css" href="/Content/ConsoleResource/src/css/component_input.css">
+    <link rel="stylesheet" type="text/css" href="/Content/ConsoleResource/src/css/login.css">
+    <script src="~/Content/ConsoleResource/src/js/login.js"></script>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="/Content/ConsoleResource/src/Js/core.basic-1.1.js"></script>
+</head>
+
+    <body>
+        <noscript>
+            页面需要支持JS才可以正常运行
+        </noscript>       
+
+        <div id="loginArea" >
+            <div id="loginInfor" style="text-align: center;line-height: 32px;color: red;"></div>
+            <form id="form1" action="/admin/console/login" method="POST">
+                <div id="loginTitle">SoPhoto信息管理系统</div>
+                <input id="usernameInput" name="username" onkeydown="if (event.keyCode == 13) { doSubmit() }" type="text" class="inputText" lefticon />
+                <input id="passwordInput" name="password" onkeydown="if (event.keyCode == 13) { doSubmit() }" type="password" class="inputText" lefticon />
+                <a id="loginSubmit" href="javascript:" onclick="doSubmit()" class="inputButton" centericon></a>
+            </form>
+        </div>
+    </body>
+</html>

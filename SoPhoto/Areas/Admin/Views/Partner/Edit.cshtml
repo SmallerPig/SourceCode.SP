@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@model SoPhoto.Entity.Partner
+@section Head{
+    <script src="~/Content/ConsoleResource/src/js/core.basic-1.1.js"></script>
+    <script src="~/Content/ConsoleResource/other/uploaderResource/js/core.uploader2.0.js"></script>
+}
+<script type="text/javascript">
+    function validateForm() {
+        return $("#form1").validate({
+            rules: {
+                //Address: { required: true },
+            },
+            messages: {
+                //Address: { required: "不能为空" },
+            }
+        }).form();
+    };
+    function doSubmit() {
+        if (validateForm()) {
+            $("#form1").submit();
+        }
+    }
+</script>
+<form id="form1" method="POST">
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">用户名</div>
+            <input type="text" name="UserName" class="inputText" value="@Model.UserName" readonly="true" />
+        </div>
+
+        <div class="contentItem">
+            <div class="contentItemTitle">密码</div>
+            <input type="password" class="inputText" name="password" value="@Model.PassWord" />
+        </div>
+    </div>
+    <div class="contentItemGroup">
+        <div class="contentItem" onlycontent>
+            <a href="List" onclick="return confirm('你确定要离开编辑页面吗')" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_return.png)">返回</a>
+            <a href="javascript:" onclick="doSubmit();" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_disk.png); float: right">提交</a>
+        </div>
+    </div>
+</form>

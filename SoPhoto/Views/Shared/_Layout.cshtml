@@ -1,0 +1,35 @@
+﻿<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>SoPhoto - @ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="/content/src/css/pub.css">
+    @RenderSection("Head", required: false)
+</head>
+    <body>
+        @RenderSection("Search", required: false)
+        <div id="headAreaWrapper">
+            <div id="headArea">
+                <img id="headLogo" src="/content/src/media/logo.png" />
+                <div id="menuArea">
+                    <a class="menuItem" href="/home/index" @ViewBag.HomeNav>首页</a>
+                    <a class="menuItem" href="/pics/Search" @ViewBag.PicsNav>图片</a>
+                    <a class="menuItem" href="/Topic/Index" @ViewBag.TopicNav>专题</a>
+                    <a class="menuItem" href="/News/Index" @ViewBag.NewsNav>新闻与活动</a>
+                </div>
+            </div>
+        </div>
+        @RenderBody()
+        @RenderSection("scripts", required: false)
+
+
+        <div id="footAreaWrapper">
+            <div id="footArea">
+                <span id="copyrightsBrief">
+                    本网站以及网站内容版权均由sophoto持有，未经允许不得使用，违者必究。<br />网站备案号 123456
+                </span>
+                <a id="partnerLink" href="/Partner">合作摄影师入口 &gt;</a>
+            </div>
+        </div>
+    </body>
+</html>

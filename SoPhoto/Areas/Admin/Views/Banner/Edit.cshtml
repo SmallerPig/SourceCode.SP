@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script src="~/Content/ConsoleResource/src/js/core.basic-1.1.js"></script>
+    <script src="~/Content/ConsoleResource/other/uploaderResource/js/core.uploader2.0.js"></script>
+}
+@model SoPhoto.Entity.SP_Banner
+<script type="text/javascript">
+    function validateForm() {
+        return $("#form1").validate({
+            rules: {
+                //Address: { required: true },
+            },
+            messages: {
+                //Address: { required: "不能为空" },
+            }
+        }).form();
+    };
+    function doSubmit() {
+        if (validateForm()) {
+            $("#form1").submit();
+        }
+    }
+</script>
+<form id="form1" method="POST">
+
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">广告连接地址</div>
+            <input type="text" class="inputText" name="LinkAddress" value="@Model.LinkAddress" />
+        </div>
+        <div class="tipItem">
+            对于站内链接，可使用相对地址。<br />
+            如果不了解相对地址的输入方法，或者对于站外连接，则输入完整链接地址。<br />
+            比如：要链接到百度，必须输入“http://www.baidu.com”，不能只输入“www.baidu.com”。
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">图片</div>
+            <div class="uploaderContainer">
+                <script type="text/javascript">
+                core.uploader.create({
+                    uploadUrl: "/Upload/Image",
+                    swfUrl: "/Content/ConsoleResource/Other/uploaderResource/swf/uploader.swf",
+                    defaultName:'@Model.Address',
+                    nameRespondElement: "Address_name",
+                    valueRespondElement: "Address",
+                    fileFormat: "图片文件:png,jpg,",
+                    fileSize: 10,
+                    defaultUiString: {
+                        btn_select: "图片"
+                    }
+                });
+                </script>
+                <input id="Address_name" name="Address_name" style="display: none" value='' />
+                <input id="Address" name="Address" style="display: none" value="@Model.Address" />
+                @*<input type="text" class="inputText" value="这个input替换成上传控件" />*@
+            </div>
+
+        </div>
+        <div class="tipItem">
+            建议使用640*320的图片。
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">后台备注</div>
+            <input type="text" class="inputText" name="Remark" value="@Model.Remark" />
+        </div>
+        <div class="tipItem">
+            填写后方便后台管理查看，此字段没有其他用处。
+        </div>
+    </div>
+
+    <div class="contentItemGroup">
+        <div class="contentItem" onlycontent>
+            <a href="../List" onclick="return confirm('你确定要离开编辑页面吗')" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_return.png)">返回</a>
+            <a href="javascript:" onclick="doSubmit();" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_disk.png); float: right">提交</a>
+        </div>
+    </div>
+</form>

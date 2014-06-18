@@ -1,0 +1,139 @@
+﻿@{
+    ViewBag.Title = "图片信息";
+    Layout = null; 
+}
+@model SoPhoto.Entity.SP_Pics
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>soPhoto - 图片详情</title>
+    <link rel="stylesheet" type="text/css" href="/Content/src/css/imageDetail.css">
+</head>
+
+<body>
+
+    <div id="contentArea">
+        <div id="contentLeftArea">
+            <div id="imageArea">
+                <div id="imageWrapper" style="background-image:url('@Html.Raw(Model.Address)');"></div>
+            </div>
+            <div id="similarImageArea">
+                <div class="titleArea">
+                    <div class="titleText">相关图片</div>
+                </div>
+                <div class="contentArea">
+                    @{
+                        IEnumerable<SoPhoto.Entity.SP_Pics> related = ViewBag.Related as IEnumerable<SoPhoto.Entity.SP_Pics>;
+                        if (related != null)
+                        {
+                            foreach (var spPicse in related)
+                            {
+                                if(spPicse.Id !=Model.Id)
+                                {
+                                    <a class="imageItem" href="/pics/detail/@spPicse.Id">
+                                        <div class="imageWrapper" style="background-image:url(@spPicse.Cover);"></div>
+                                    </a>                                    
+                                }
+
+                            }
+                        }
+                    }
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div id="contentRightArea">
+            <div id="imageInfoArea">
+                <div class="titleArea">
+                    <div class="titleText">图片信息</div>
+                </div>
+                <div class="contentArea">
+                    <div class="imageInfoItem">
+                        <div class="imageInfoItemTitle">照片标题：</div>
+                        <div class="ImageInfoItemContent">
+                            @Model.Title
+                        </div>
+                    </div>
+                    <div class="imageInfoItem">
+                        <div class="imageInfoItemTitle">照片概述：</div>
+                        <div class="ImageInfoItemContent">
+                            @Model.Summary
+                        </div>
+                    </div>
+                    <div id="imageDetailInfoArea">
+                        <div class="imageInfoItem">
+                            <div class="imageInfoItemTitle">摄影师：</div>
+                            <div class="ImageInfoItemContent">
+                                @Model.Author
+                            </div>
+                        </div>
+                        <div class="imageInfoItem">
+                            <div class="imageInfoItemTitle">拍摄时间：</div>
+                            <div class="ImageInfoItemContent">
+                               @Model.CreateDate.ToString("yyyy-MM-dd")
+                            </div>
+                        </div>
+                        <div class="imageInfoItem">
+                            <div class="imageInfoItemTitle">图片编号：</div>
+                            <div class="ImageInfoItemContent">
+                                @Model.PicCode
+                            </div>
+                        </div>
+                        <div class="imageInfoItem">
+                            <div class="imageInfoItemTitle">肖像权/物权说明：</div>
+                            <div class="ImageInfoItemContent">
+                                @Model.Affirming
+                            </div>
+                        </div>
+                        <div class="imageInfoItem">
+                            <div class="imageInfoItemTitle">文件大小：</div>
+                            <div class="ImageInfoItemContent">
+                                @Model.FileSize
+                            </div>
+                        </div>
+                        <div class="imageInfoItem">
+                            <div class="imageInfoItemTitle">图片尺寸：</div>
+                            <div class="ImageInfoItemContent">
+                                @Model.PicSize
+                            </div>
+                        </div>
+                        <div class="imageInfoItem">
+                            <div class="imageInfoItemTitle">类别：</div>
+                            <div class="ImageInfoItemContent">
+                                @(Model.BaseCategory==1?"创意类":"编辑类")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="imageInfoItem">
+                        <div class="imageInfoItemTitle">标签：</div>
+                        <div class="ImageInfoItemContent">
+                            @{
+                                if (Model.KeyWords!=null)
+                                {
+                                    string[] keyArray = Model.KeyWords.Split(';');
+                                    foreach (var s in keyArray)
+                                    {
+                                        <a class="imageTag" href="/pics/search?keyword=@s">@s</a>
+                                    }
+                                }
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="imageUseAndBuy">
+                <div class="titleArea">
+                    <div class="titleText">图片使用与购买</div>
+                </div>
+                <div class="contentArea">
+                    @Model.UseAndBuy
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

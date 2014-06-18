@@ -1,0 +1,587 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@section Head{
+<link rel="stylesheet" type="text/css" href="/Content/src/css/imageSearch.css">
+<script src="/Content/src/js/imageSearch.js"></script>
+}
+<div id="contentAreaWrapper">
+    <table id="contentArea">
+        <tr>
+            <td id="searchArea">
+                <div id="searchInputArea">
+                    <input class="inputText" id="searchInputText" placeholder="输入关键词" />
+                </div>
+                <div id="searchOptionArea">
+                    <!---->
+                    <div class="searchOptionItem" opened>
+                        <div class="searchOptionItemTitle">基本类别</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="1" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checksynmark="1">
+                                <span class="inputCheckBoxMarker"></span>创意类
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="1">
+                                <span class="inputCheckBoxMarker"></span>版权管理图片(RM)
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="1">
+                                <span class="inputCheckBoxMarker"></span>免版税图片(RF)
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="1">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checksynmark="2">
+                                <span class="inputCheckBoxMarker"></span>编辑类
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>纪实
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>风光
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>自然
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>民俗
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>历史
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>商业广告
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>艺术
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>实验
+                            </label>
+                            <label class="searchOptionUnit" lv2>
+                                <input type="checkbox" class="inputCheckBox" group="1" synmark="2">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">内容风格</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="2" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="2">
+                                <span class="inputCheckBoxMarker"></span>照片
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="2">
+                                <span class="inputCheckBoxMarker"></span>插画
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="2">
+                                <span class="inputCheckBoxMarker"></span>插图
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="2">
+                                <span class="inputCheckBoxMarker"></span>地图
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="2">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">拍摄地区</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="3" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="3">
+                                <span class="inputCheckBoxMarker"></span>中国
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="3">
+                                <span class="inputCheckBoxMarker"></span>亚洲
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="3">
+                                <span class="inputCheckBoxMarker"></span>北美
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="3">
+                                <span class="inputCheckBoxMarker"></span>南美
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="3">
+                                <span class="inputCheckBoxMarker"></span>欧洲
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="3">
+                                <span class="inputCheckBoxMarker"></span>非洲
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="3">
+                                <span class="inputCheckBoxMarker"></span>澳洲
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="3">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">主色调</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="4" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit" color="colorful">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>杂彩
+                            </label>
+                            <label class="searchOptionUnit" color="blackWhite">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>黑白
+                            </label>
+                            <label class="searchOptionUnit" color="red">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>红色
+                            </label>
+                            <label class="searchOptionUnit" color="orange">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>橘黄色
+                            </label>
+                            <label class="searchOptionUnit" color="yellow">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>黄色
+                            </label>
+                            <label class="searchOptionUnit" color="green">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>绿色
+                            </label>
+                            <label class="searchOptionUnit" color="cyan">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>青色
+                            </label>
+                            <label class="searchOptionUnit" color="blue">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>蓝色
+                            </label>
+                            <label class="searchOptionUnit" color="purple">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>紫色
+                            </label>
+                            <label class="searchOptionUnit" color="pink">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>粉红色
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="4">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">版式</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="5" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="5">
+                                <span class="inputCheckBoxMarker"></span>方片
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="5">
+                                <span class="inputCheckBoxMarker"></span>横片
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="5">
+                                <span class="inputCheckBoxMarker"></span>竖片
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="5">
+                                <span class="inputCheckBoxMarker"></span>全景
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="5">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">拍摄地点</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="6" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="6">
+                                <span class="inputCheckBoxMarker"></span>户外
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="6">
+                                <span class="inputCheckBoxMarker"></span>室内
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="6">
+                                <span class="inputCheckBoxMarker"></span>影棚
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="6">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">写景方式</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="7" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="7">
+                                <span class="inputCheckBoxMarker"></span>特写
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="7">
+                                <span class="inputCheckBoxMarker"></span>近景
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="7">
+                                <span class="inputCheckBoxMarker"></span>中景
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="7">
+                                <span class="inputCheckBoxMarker"></span>远景
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="7">
+                                <span class="inputCheckBoxMarker"></span>航拍
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="7">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">拍摄时间</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="8" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="8">
+                                <span class="inputCheckBoxMarker"></span>一周内
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="8">
+                                <span class="inputCheckBoxMarker"></span>一个月内
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="8">
+                                <span class="inputCheckBoxMarker"></span>半年内
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="8">
+                                <span class="inputCheckBoxMarker"></span>一年内
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="8">
+                                <span class="inputCheckBoxMarker"></span>两年内
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="8">
+                                <span class="inputCheckBoxMarker"></span>三年内
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="8">
+                                <span class="inputCheckBoxMarker"></span>三年前
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">人物性别</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="9" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="9">
+                                <span class="inputCheckBoxMarker"></span>无人照
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="9">
+                                <span class="inputCheckBoxMarker"></span>仅男性
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="9">
+                                <span class="inputCheckBoxMarker"></span>仅女性
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="9">
+                                <span class="inputCheckBoxMarker"></span>男性和女性
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="9">
+                                <span class="inputCheckBoxMarker"></span>其他
+                            </label>
+                        </div>
+                    </div>
+                    <!---->
+                    <div class="searchOptionItem">
+                        <div class="searchOptionItemTitle">人物年龄</div>
+                        <div class="searchOptionItemList">
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" checkgroup="10" checked>
+                                <span class="inputCheckBoxMarker"></span>不限
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="10">
+                                <span class="inputCheckBoxMarker"></span>无人照
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="10">
+                                <span class="inputCheckBoxMarker"></span>婴儿（0-12个月）
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="10">
+                                <span class="inputCheckBoxMarker"></span>儿童（1-12岁）
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="10">
+                                <span class="inputCheckBoxMarker"></span>少年（13-17岁）
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="10">
+                                <span class="inputCheckBoxMarker"></span>青年（18-35岁）
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="10">
+                                <span class="inputCheckBoxMarker"></span>中年（36岁-40岁）
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="10">
+                                <span class="inputCheckBoxMarker"></span>中老年（41-59岁）
+                            </label>
+                            <label class="searchOptionUnit">
+                                <input type="checkbox" class="inputCheckBox" group="10">
+                                <span class="inputCheckBoxMarker"></span>老年（60岁以上）
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div id="searchSubmitArea">
+                    <a id="searchSubmitButton" href="XXXXXXXXXXXXXXXx"></a>
+                </div>
+            </td>
+            <td id="searchResultArea">
+                <div id="searchResultAreaInnerWrapper">
+                    <a class="searchResultItem" href="XXXXXXXXXXXXXXx">
+                        <div class="searchResultImageWrapper">
+                            <div class="searchResultImage" style="background-image:url(/srctemp/QQ%E6%88%AA%E5%9B%BE20140512094825.png);"></div>
+                        </div>
+                        <div class="searchResultInfoWrapper">
+                            <div class="searchResultInfoTitle">标题标题标题</div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">摄影师：</span><span class="contentText">张三</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">类　别：</span><span class="contentText">创意类</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">授　权：</span><span class="contentText">有授权</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">编　号：</span><span class="contentText">129832</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="searchResultItem" href="XXXXXXXXXXXXXXx">
+                        <div class="searchResultImageWrapper">
+                            <div class="searchResultImage" style="background-image:url(/srctemp/QQ%E6%88%AA%E5%9B%BE20140512094825.png);"></div>
+                        </div>
+                        <div class="searchResultInfoWrapper">
+                            <div class="searchResultInfoTitle">标题标题标题</div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">摄影师：</span><span class="contentText">张三</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">类　别：</span><span class="contentText">创意类</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">授　权：</span><span class="contentText">有授权</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">编　号：</span><span class="contentText">129832</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="searchResultItem" href="XXXXXXXXXXXXXXx">
+                        <div class="searchResultImageWrapper">
+                            <div class="searchResultImage" style="background-image:url(/srctemp/QQ%E6%88%AA%E5%9B%BE20140512094825.png);"></div>
+                        </div>
+                        <div class="searchResultInfoWrapper">
+                            <div class="searchResultInfoTitle">标题标题标题</div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">摄影师：</span><span class="contentText">张三</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">类　别：</span><span class="contentText">创意类</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">授　权：</span><span class="contentText">有授权</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">编　号：</span><span class="contentText">129832</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="searchResultItem" href="XXXXXXXXXXXXXXx">
+                        <div class="searchResultImageWrapper">
+                            <div class="searchResultImage" style="background-image:url(/srctemp/QQ%E6%88%AA%E5%9B%BE20140512094825.png);"></div>
+                        </div>
+                        <div class="searchResultInfoWrapper">
+                            <div class="searchResultInfoTitle">标题标题标题</div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">摄影师：</span><span class="contentText">张三</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">类　别：</span><span class="contentText">创意类</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">授　权：</span><span class="contentText">有授权</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">编　号：</span><span class="contentText">129832</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="searchResultItem" href="XXXXXXXXXXXXXXx">
+                        <div class="searchResultImageWrapper">
+                            <div class="searchResultImage" style="background-image:url(/srctemp/QQ%E6%88%AA%E5%9B%BE20140512094825.png);"></div>
+                        </div>
+                        <div class="searchResultInfoWrapper">
+                            <div class="searchResultInfoTitle">标题标题标题</div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">摄影师：</span><span class="contentText">张三</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">类　别：</span><span class="contentText">创意类</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">授　权：</span><span class="contentText">有授权</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">编　号：</span><span class="contentText">129832</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="searchResultItem" href="XXXXXXXXXXXXXXx">
+                        <div class="searchResultImageWrapper">
+                            <div class="searchResultImage" style="background-image:url(/srctemp/QQ%E6%88%AA%E5%9B%BE20140512094825.png);"></div>
+                        </div>
+                        <div class="searchResultInfoWrapper">
+                            <div class="searchResultInfoTitle">标题标题标题</div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">摄影师：</span><span class="contentText">张三</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">类　别：</span><span class="contentText">创意类</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">授　权：</span><span class="contentText">有授权</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">编　号：</span><span class="contentText">129832</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="searchResultItem" href="XXXXXXXXXXXXXXx">
+                        <div class="searchResultImageWrapper">
+                            <div class="searchResultImage" style="background-image:url(/srctemp/QQ%E6%88%AA%E5%9B%BE20140512094825.png);"></div>
+                        </div>
+                        <div class="searchResultInfoWrapper">
+                            <div class="searchResultInfoTitle">标题标题标题</div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">摄影师：</span><span class="contentText">张三</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">类　别：</span><span class="contentText">创意类</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">授　权：</span><span class="contentText">有授权</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">编　号：</span><span class="contentText">129832</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a class="searchResultItem" href="XXXXXXXXXXXXXXx">
+                        <div class="searchResultImageWrapper">
+                            <div class="searchResultImage" style="background-image:url(/srctemp/QQ%E6%88%AA%E5%9B%BE20140512094825.png);"></div>
+                        </div>
+                        <div class="searchResultInfoWrapper">
+                            <div class="searchResultInfoTitle">标题标题标题</div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">摄影师：</span><span class="contentText">张三</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">类　别：</span><span class="contentText">创意类</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">授　权：</span><span class="contentText">有授权</span>
+                            </div>
+                            <div class="searchResultInfoOther">
+                                <span class="markText">编　号：</span><span class="contentText">129832</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div id="searchResultPageInfoArea">
+                    <a id="gotoFirstPage" href="XXXXXXXXX">第一页</a>
+                    <a id="gotoPrevPage" href="XXXXXXXXX">&lt;上一页</a>
+                    <input id="currentPageInput" value="12" />
+                    <span id="totalPage">/ 234</span>
+                    <a id="gotoNextPage" href="XXXXXXXXX">下一页&gt;</a>
+                    <a id="gotoLastPage" href="XXXXXXXXX">尾页</a>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>

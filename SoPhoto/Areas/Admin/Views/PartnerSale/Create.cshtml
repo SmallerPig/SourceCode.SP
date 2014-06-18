@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+@section Head{
+    <script src="~/Content/ConsoleResource/src/js/core.basic-1.1.js"></script>
+    <script src="~/Content/ConsoleResource/other/uploaderResource/js/core.uploader2.0.js"></script>
+}
+<script type="text/javascript">
+    var isAuthorCheck = false;
+    var isPicCodeCheck = false;
+
+    function validateForm() {
+        return $("#form1").validate({
+            rules: {
+                PartnerId: { required: true },
+                PicCode: { required: true },
+                Price: { required: true,number:true },
+            },
+            messages: {
+                PartnerId: { required: "不能为空" },
+                PicCode: { required: "不能为空" },
+                Price: { required: "不能为空",number:"必须为数字" },
+            }
+        }).form();
+    };
+    function doSubmit() {
+        if (validateForm()) {
+            if (isAuthorCheck && isPicCodeCheck)
+                $("#form1").submit();
+        }
+    }
+
+    function checkAuthor() {
+        var UserName = $("#UserName").val();
+        var data = { "UserName": UserName };
+        var onsuccess = function (e) {
+            if (e == "success") {
+                $("#tipitem_partnerid").css({ display: "none" });
+                isAuthorCheck = true;
+            } else {
+                $("#tipitem_partnerid").css({ display: "block" });
+                isAuthorCheck = false;
+            }
+        }
+        core.AJAX(data, "/admin/partnersale/checkauthor", "", onsuccess);
+    }
+
+    function checkPicCode() {
+        var PicCode = $("#PicCode").val();
+        var data = { "PicCode": PicCode };
+        var onsuccess = function (e) {
+            if (e == "success") {
+                $("#tipitem_piccode").css({ display: "none" });
+                isAuthorCheck = true;
+            } else {
+                $("#tipitem_piccode").css({ display: "block" });
+                isAuthorCheck = false;
+            }
+        }
+        core.AJAX(data, "/admin/partnersale/checkPicCode", "", onsuccess);
+    }
+
+
+</script>
+<form id="form1" method="POST">
+    <div class="contentItemGroup">
+        <div class="contentItem">
+            <div class="contentItemTitle">作者账号名</div>
+            <input type="text" id="UserName" name="UserName" onblur="checkAuthor();" class="inputText" />
+        </div>
+        <div id="tipitem_partnerid" class="tipItem">
+            未发现该用户
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">图片编号</div>
+            <input type="text" id="PicCode" name="PicCode" onblur="checkPicCode();" class="inputText" />
+        </div>
+        <div id="tipitem_piccode" class="tipItem">
+            未发现此图片
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">销售时间</div>
+            <input type="text" class="inputText" value="@DateTime.Now.ToString("yyyy-MM-dd")" name="SaleTime" />
+        </div>
+        <div class="contentItem">
+            <div class="contentItemTitle">应得收益</div>
+            <input type="text" class="inputText" id="Price" name="Price" />
+        </div>        
+        <div class="tipItem">
+            ”应得收益“需要填写数字，不可出现汉字等非数字字符<br />
+        </div>
+    </div>
+    <div class="contentItemGroup">
+        <div class="contentItem" onlycontent>
+            <a href="List" onclick="return confirm('你确定要离开编辑页面吗')" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_return.png)">返回</a>
+            <a href="javascript:" onclick="doSubmit();" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_disk.png); float: right">提交</a>
+        </div>
+    </div>
+</form>
