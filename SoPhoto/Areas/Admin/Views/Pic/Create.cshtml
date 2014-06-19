@@ -11,34 +11,36 @@
     function validateForm() {
         return $("#form1").validate({
             rules: {
-                Address: { required: true },
-                Title: { required: true },
-                summary: { required: true },
-                author: { required: true },
-                affirming: { required: true },
-                FileSize: { required: true },
-                PicSize: { required: true },
-                UseAndBuy: { required: true },
-                CreateDate: { required: true },
-                keywords: { required: true },
+                //Address: { required: true },
+                //Title: { required: true },
+                //summary: { required: true },
+                //author: { required: true },
+                //affirming: { required: true },
+                //FileSize: { required: true },
+                //PicSize: { required: true },
+                //UseAndBuy: { required: true },
+                //CreateDate: { required: true },
+                //keywords: { required: true },
             },
             messages: {
-                Address: { required: "不能为空" },
-                Title: { required: "不能为空" },
-                summary: { required: "不能为空" },
-                author: { required: "不能为空" },
-                affirming: { required: "不能为空" },
-                FileSize: { required: "不能为空" },
-                PicSize: { required: "不能为空" },
-                CreateDate: { required: "不能为空" },
-                UseAndBuy: { required: "不能为空" },
-                keywords: { required: "不能为空" },
+                //Address: { required: "不能为空" },
+                //Title: { required: "不能为空" },
+                //summary: { required: "不能为空" },
+                //author: { required: "不能为空" },
+                //affirming: { required: "不能为空" },
+                //FileSize: { required: "不能为空" },
+                //PicSize: { required: "不能为空" },
+                //CreateDate: { required: "不能为空" },
+                //UseAndBuy: { required: "不能为空" },
+                //keywords: { required: "不能为空" },
             }
         }).form();
     };
     function doSubmit() {
         if (validateForm()) {
-            $("#form1").submit();
+            if (simple.validator.validate() == true) {
+                $("#form1").submit();
+            }
         }
     }
 </script>
@@ -77,38 +79,38 @@
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">标题</div>
-            <input type="text" class="inputText" id="Title" name="Title" />
+            <input type="text" class="inputText" id="Title" name="Title" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">简介</div>
-            <textarea class="inputText" id="summary" name="summary"></textarea>
+            <textarea class="inputText" id="summary" name="summary" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');"></textarea>
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">摄影师</div>
-            <input type="text" class="inputText" id="author" name="author" />
+            <input type="text" class="inputText" id="author" name="author" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">肖像权/物权说明</div>
-            <input type="text" class="inputText" id="affirming" name="affirming" />
+            <input type="text" class="inputText" id="affirming" name="affirming" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">文件大小</div>
-            <input type="text" class="inputText" id="FileSize" name="FileSize" />
+            <input type="text" class="inputText" id="FileSize" name="FileSize" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">图片尺寸</div>
-            <input type="text" class="inputText" id="PicSize" name="PicSize" />
+            <input type="text" class="inputText" id="PicSize" name="PicSize" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">拍摄时间</div>
-            <input type="text" class="inputText" id="CreateDate" name="CreateDate" value="@DateTime.Now.ToString("yyy-MM-dd")" />
+            <input type="text" class="inputText" id="CreateDate" name="CreateDate" value="@DateTime.Now.ToString("yyy-MM-dd")" s-validator-rules="required|date" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="tipItem">
             以yyyy-mm-dd的格式填写，如：2014-05-08。
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">图片使用与购买</div>
-            <textarea class="inputText" id="UseAndBuy" name="UseAndBuy"></textarea>
+            <textarea class="inputText" id="UseAndBuy" name="UseAndBuy" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');"></textarea>
         </div>
 
     </div>
@@ -116,7 +118,7 @@
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">关键词</div>
-            <textarea class="inputText" id="keywords" name="keywords"></textarea>
+            <textarea class="inputText" id="keywords" name="keywords" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');"></textarea>
         </div>
         <div class="tipItem">
             关键词之间以英文分号";"隔开。

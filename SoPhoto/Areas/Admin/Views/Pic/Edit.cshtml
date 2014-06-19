@@ -12,32 +12,34 @@
     function validateForm() {
         return $("#form1").validate({
             rules: {
-                Address: { required: true },
-                Title: { required: true },
-                summary: { required: true },
-                author: { required: true },
-                affirming: { required: true },
-                FileSize: { required: true },
-                PicSize: { required: true },
-                CreateDate: { required: true },
-                keywords: { required: true },
+                //Address: { required: true },
+                //Title: { required: true },
+                //summary: { required: true },
+                //author: { required: true },
+                //affirming: { required: true },
+                //FileSize: { required: true },
+                //PicSize: { required: true },
+                //CreateDate: { required: true },
+                //keywords: { required: true },
             },
             messages: {
-                Address: { required: "不能为空" },
-                Title: { required: "不能为空" },
-                summary: { required: "不能为空" },
-                author: { required: "不能为空" },
-                affirming: { required: "不能为空" },
-                FileSize: { required: "不能为空" },
-                PicSize: { required: "不能为空" },
-                CreateDate: { required: "不能为空" },
-                keywords: { required: "不能为空" },
+                //Address: { required: "不能为空" },
+                //Title: { required: "不能为空" },
+                //summary: { required: "不能为空" },
+                //author: { required: "不能为空" },
+                //affirming: { required: "不能为空" },
+                //FileSize: { required: "不能为空" },
+                //PicSize: { required: "不能为空" },
+                //CreateDate: { required: "不能为空" },
+                //keywords: { required: "不能为空" },
             }
         }).form();
     };
     function doSubmit() {
         if (validateForm()) {
-            $("#form1").submit();
+            if (simple.validator.validate() == true) {
+                $("#form1").submit();
+            }
         }
     }
 </script>
@@ -75,42 +77,42 @@
         <input type="hidden" name="Id" value="@Model.Id" />
         <div class="contentItem">
             <div class="contentItemTitle">标题</div>
-            <input type="text" class="inputText" id="Title" name="Title" value="@Model.Title"/>
+            <input type="text" class="inputText" id="Title" name="Title" value="@Model.Title" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">编号</div>
-            <input type="text" class="inputText" name="PicCode" value="@Model.PicCode" readonly="true" />
+            <input type="text" class="inputText" name="PicCode" value="@Model.PicCode" readonly="true" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">简介</div>
-            <textarea class="inputText" name="summary">@Model.Summary</textarea>
+            <textarea class="inputText" name="summary" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');">@Model.Summary</textarea>
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">摄影师</div>
-            <input type="text" class="inputText" name="author" value="@Model.Author" />
+            <input type="text" class="inputText" name="author" value="@Model.Author" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">肖像权/物权说明</div>
-            <input type="text" class="inputText" name="Affirming" value="@Model.Affirming" />
+            <input type="text" class="inputText" name="Affirming" value="@Model.Affirming" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">文件大小</div>
-            <input type="text" class="inputText" name="FileSize" value="@Model.FileSize" />
+            <input type="text" class="inputText" name="FileSize" value="@Model.FileSize" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">图片尺寸</div>
-            <input type="text" class="inputText" name="PicSize" value="@Model.PicSize" />
+            <input type="text" class="inputText" name="PicSize" value="@Model.PicSize" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">拍摄时间</div>
-            <input type="text" class="inputText" name="CreateDate" value="@Model.CreateDate.ToString("yyyy-MM-dd")" />
+            <input type="text" class="inputText" name="CreateDate" value="@Model.CreateDate.ToString("yyyy-MM-dd")" s-validator-rules="required|date" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="tipItem">
             以yyyy-mm-dd的格式填写，如：2014-05-08。
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">图片使用与购买</div>
-            <textarea class="inputText" id="UseAndBuy" name="UseAndBuy">@Model.UseAndBuy</textarea>
+            <textarea class="inputText" id="UseAndBuy" name="UseAndBuy" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');">@Model.UseAndBuy</textarea>
         </div>
 
     </div>
