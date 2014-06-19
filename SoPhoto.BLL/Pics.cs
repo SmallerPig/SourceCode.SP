@@ -26,19 +26,21 @@ namespace SoPhoto.BLL
         public IEnumerable<Entity.SP_Pics> Filter(IEnumerable<KeyValuePair<string, string[]>> parms,int pageindex,int pagecount)
         {
             Expression<Func<Entity.SP_Pics, bool>> expression = GetFilter(parms);
-            return helper.Filter(expression,pageindex,pagecount);
+            return helper.Filter(expression, pageindex, pagecount);
         }
 
 
         Expression<Func<Entity.SP_Pics, bool>> GetFilter(IEnumerable<KeyValuePair<string, string[]>> parms)
         {
             Expression<Func<Entity.SP_Pics, bool>> expression = PredicateBuilder.True<Entity.SP_Pics>();
-
+            Expression<Func<Entity.SP_Pics, bool>> express = PredicateBuilder.False<Entity.SP_Pics>();//基础类别的两个特殊筛选需要特殊处理
+            bool isHasBaseCategory = false;
             foreach (var keyValuePair in parms)
             {
                 KeyValuePair<string, string[]> pair = keyValuePair;
                 if (pair.Value != null)
                 {
+                    
                     int[] valus = pair.Value.ToList().Select(int.Parse).ToArray();
                     switch (keyValuePair.Key)
                     {
@@ -46,10 +48,12 @@ namespace SoPhoto.BLL
                             expression = expression.And(t => valus.Contains(t.BaseCategory));
                             break;
                         case "creativeType":
-                            expression = expression.And(t => t.BaseCategory == 1 && valus.Contains(t.CreativeType));
+                            isHasBaseCategory = true;
+                            express = express.Or(t => t.BaseCategory == 1 && valus.Contains(t.CreativeType));
                             break;
                         case "editType":
-                            expression = expression.And(t => t.BaseCategory == 2 && pair.Value.Contains(t.Class_Edit));
+                            isHasBaseCategory = true;
+                            express = express.Or(t => t.BaseCategory == 2 && pair.Value.Contains(t.Class_Edit));
                             break;
                         case "style":
                             expression = expression.And(t => valus.Contains(t.Class_Style));
@@ -74,8 +78,12 @@ namespace SoPhoto.BLL
                             break;
                     }
                 }
-
             }
+            if (isHasBaseCategory)
+            {
+                expression = expression.And(express);
+            }
+
             return expression;
         }
 
@@ -114,8 +122,23 @@ namespace SoPhoto.BLL
 
         public Entity.SP_Pics Insert(Entity.SP_Pics t)
         {
+            t.KeyWords = ProcessKeyWord(t.KeyWords);
             t.PicCode = CreateCode(t);
             return helper.Insert(t);
+        }
+
+
+        /// <summary>
+        /// 处理关键字逻辑，使每个关键字都已;结束
+        /// </summary>
+        /// <param name="p"></param>
+        /// <returns></returns>
+        private string ProcessKeyWord(string p)
+        {
+            p = p.Trim();
+            if (p.LastIndexOfAny(new char[] { ';' }) < p.Length - 1)
+                return p + ";";
+            return p;
         }
 
         private string CreateCode(Entity.SP_Pics t)
@@ -137,6 +160,7 @@ namespace SoPhoto.BLL
 
         public void Update(Entity.SP_Pics t)
         {
+            t.KeyWords = ProcessKeyWord(t.KeyWords);
             helper.Update(t);
         }
 
@@ -170,7 +194,7 @@ namespace SoPhoto.BLL
             return helper.GetByPicCode(pic);
         }
 
-        public IEnumerable<Entity.SP_Pics> Filter(IEnumerable<Entity.SP_Pics> piclist, IEnumerable<KeyValuePair<string, string[]>> parms)
+        public IEnumerable<Entity.SP_Pics> Filter(IEnumerable<Entity.SP_Pics> piclist, IEnumerable<KeyValuePair<string, string[]>> parms,int pageIndex=1,int pageSize =20)
         {
             Expression<Func<Entity.SP_Pics, bool>> expression = GetFilter(parms);
             return piclist.AsQueryable().Where(expression);
@@ -180,6 +204,20 @@ namespace SoPhoto.BLL
         {
             Expression<Func<Entity.SP_Pics, bool>> expression = GetFilter(parms);
             return helper.CountByFilter(expression);
+        }
+
+        public IEnumerable<Entity.SP_Pics> SearchByKeyWord(string keyword)
+        {
+            //Expression<Func<Entity.SP_Pics, bool>> expression = GetFilter(parms);
+            //expression.And(item => item.IsLock == false && (item.Title.Contains(keyword) || item.Summary.Contains(keyword) || item.KeyWords.Contains(keyword + ";")));
+            return helper.SearchByKeyword(keyword);
+        }
+
+        public int CountByKeyWord(string keyword, IEnumerable<KeyValuePair<string, string[]>> parms)
+        {
+            Expression<Func<Entity.SP_Pics, bool>> expression = GetFilter(parms);
+            expression.And(item => item.IsLock == false && (item.Title.Contains(keyword) || item.Summary.Contains(keyword) || item.KeyWords.Contains(keyword + ";")));
+            return helper.CountByKeyWord(expression);
         }
     }
 

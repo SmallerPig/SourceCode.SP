@@ -34,14 +34,14 @@
     <div id="contentRightArea">
         <div id="rightSideAdArea">
             @{
-                if (Model.Ads != null)
-                {
-                    foreach (var ad in Model.Ads)
-                    {
-                        <a class="adWrapper" href="@ad.LinkAddress"><img class="adImage" src="@ad.Address"></a>
-                    }
-                }
-            }
+    if (Model.Ads != null)
+    {
+        foreach (var ad in Model.Ads)
+        {
+            <a class="adWrapper" href="@ad.LinkAddress" target="_blank"><img class="adImage" src="@ad.Address"></a>
+        }
+    }
+}
         </div>
     </div>
 </div>

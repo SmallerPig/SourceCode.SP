@@ -14,7 +14,7 @@
         <!--部分内容由于每个项目涉及都不一样，这部分样式没有模板化，以后项目的时候也是直接写在html标签style样式里就行，比较方便修改-->
         <a href="Create" class="inputButton" lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_plus.png); float: left;">添加条目</a>
         <form id="search" method="GET">
-            <input type="text" id="keyword" class="inputText" style="float:left; margin-left:32px;" />
+            <input type="text" id="keyword" name="keyword" onkeydown="if (event.keyCode == 13) { submit() }" class="inputText" style="float:left; margin-left:32px;" />
             <a class="inputButton" href="javascript:submit()"  lefticon style="background-image: url(/Content/ConsoleResource/src/media/icon_magnifier.png); float: left; margin-left: 8px;">搜索编号</a>
         </form>
     </div>

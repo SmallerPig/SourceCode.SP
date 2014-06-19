@@ -24,21 +24,21 @@
                 </div>
                 <div class="contentArea">
                     @{
-                        IEnumerable<SoPhoto.Entity.SP_Pics> related = ViewBag.Related as IEnumerable<SoPhoto.Entity.SP_Pics>;
-                        if (related != null)
-                        {
-                            foreach (var spPicse in related)
-                            {
-                                if(spPicse.Id !=Model.Id)
-                                {
-                                    <a class="imageItem" href="/pics/detail/@spPicse.Id">
-                                        <div class="imageWrapper" style="background-image:url(@spPicse.Cover);"></div>
-                                    </a>                                    
-                                }
+    IEnumerable<SoPhoto.Entity.SP_Pics> related = ViewBag.Related as IEnumerable<SoPhoto.Entity.SP_Pics>;
+    if (related != null)
+    {
+        foreach (var spPicse in related)
+        {
+            if (spPicse.Id != Model.Id)
+            {
+                <a class="imageItem" href="/pics/detail/@spPicse.Id" target="_blank">
+                    <div class="imageWrapper" style="background-image:url(@spPicse.Cover);"></div>
+                </a>
+            }
 
-                            }
-                        }
-                    }
+        }
+    }
+}
                     
                     
                 </div>

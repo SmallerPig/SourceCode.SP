@@ -21,11 +21,48 @@ namespace SoPhoto.Controllers
         protected int pageIndex = 1;
         protected int pageSize = 20;
         protected int count = 0;
-        protected int pageCount = 0;
+        protected int pageCount = 1;
         protected string perPage = "";
         protected string nextPage = "";
         
         public ActionResult Search()
+        {
+
+            IEnumerable<Entity.SP_Pics> piclist;
+            IEnumerable<KeyValuePair<string, string[]>> parms = ProcessRequest();
+            string keyword = Request.QueryString["keyword"];
+            if (!string.IsNullOrEmpty(keyword))
+            {
+                Entity.SP_Pics p = helper.GetByCode(keyword);
+                if(p!=null)
+                {
+                    return View(new List<Entity.SP_Pics>() { p });
+                }
+                //count = helper.CountByKeyWord(keyword);
+                piclist = helper.SearchByKeyWord(keyword);
+
+                //keyword = RY.Common.StringHelp.FilterSymbolStr(keyword);
+                ////int count1 = count;
+                //piclist = BLL.SearchHelper.GetInstance()
+                //    .SearchIndex(keyword, pageSize, pageIndex);
+                count = piclist.Count();
+                ProcessPage();
+                if(piclist !=null)
+                {
+                    piclist = helper.Filter(piclist, parms);
+                    piclist = piclist.Skip((pageIndex - 1) * pageSize).Take(pageSize);
+                }
+            }
+            else
+            {
+                count = helper.CountByFilter(parms);
+                ProcessPage();
+                piclist = helper.Filter(parms, pageIndex, pageSize);
+            }
+            return View(piclist);
+        }
+
+        void ProcessPage()
         {
             try
             {
@@ -42,37 +79,6 @@ namespace SoPhoto.Controllers
             {
                 pageIndex = 1;
             }
-            IEnumerable<Entity.SP_Pics> piclist;
-            IEnumerable<KeyValuePair<string, string[]>> parms = ProcessRequest();
-            string keyword = Request.QueryString["keyword"];
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                Entity.SP_Pics p = helper.GetByCode(keyword);
-                if(p!=null)
-                {
-                    return View(new List<Entity.SP_Pics>() { p });
-                }
-                keyword = RY.Common.StringHelp.FilterSymbolStr(keyword);
-                //int count1 = count;
-                piclist = BLL.SearchHelper.GetInstance()
-                    .SearchIndex(keyword, pageSize, pageIndex);
-                if(piclist !=null)
-                {
-                    piclist = helper.Filter(piclist, parms);
-                    count = pageCount;
-                }
-            }
-            else
-            {
-                piclist = helper.Filter(parms,pageIndex,pageSize);
-                count = helper.CountByFilter(parms);
-            }
-            ProcessPage(pageIndex, pageCount, count);
-            return View(piclist);
-        }
-
-        void ProcessPage(int pageIndex,int pageCount, int count)
-        {
             pageCount = (count % pageSize == 0) ? count / pageSize : count / pageSize + 1;
             if (pageIndex >= pageCount && pageCount > 0)
             {
@@ -95,7 +101,6 @@ namespace SoPhoto.Controllers
             }
             ViewData["pageIndex"] = pageIndex;
             ViewData["pageCount"] = pageCount;
-
         }
 
         private string DeletePageIndex(string p)

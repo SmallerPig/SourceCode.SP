@@ -106,5 +106,20 @@ namespace SoPhoto.DAL
         {
             return db.SP_Pics.Count(expression);
         }
+
+        public IEnumerable<SP_Pics> SearchByKeyword(string keyword)
+        {
+            return db.SP_Pics.Where(item => item.IsLock == false && (item.Title.Contains(keyword) || item.Summary.Contains(keyword) || item.KeyWords.Contains(keyword + ";"))).OrderByDescending(item => item.Id);
+        }
+
+        public int CountByKeyWord(Expression<Func<Entity.SP_Pics, bool>> where)
+        {
+            return db.SP_Pics.Count(where);
+        }
+
+        public IEnumerable<SP_Pics> SearchByKeyword(Expression<Func<SP_Pics, bool>> expression, int p, int pageSize)
+        {
+            return db.SP_Pics.Where(expression).OrderByDescending(item => item.Id).Skip(p).Take(pageSize);
+        }
     }
 }

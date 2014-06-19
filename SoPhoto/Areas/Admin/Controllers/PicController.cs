@@ -167,6 +167,8 @@ namespace SoPhoto.Areas.Admin.Controllers
             }
         }
 
+
+
         public ActionResult ConsoleList(string keyword)
         {
             var picHelper = helper as BLL.Pics;

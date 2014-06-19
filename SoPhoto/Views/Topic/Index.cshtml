@@ -9,21 +9,21 @@
 @model IEnumerable<SoPhoto.Entity.SP_Topic>
 <div id="contentArea">
     @{
-        if (Model != null)
+    if (Model != null)
+    {
+        foreach (var topic in Model)
         {
-            foreach (var topic in Model)
-            {
-                <a class="topicUnit" href="/Topic/Content/@topic.Id">
-                    <img class="topicImage" src="@topic.Cover" />
-                    <div class="topicBrief">
-                        @topic.Summary
-                    </div>
-                    <div class="topicTitle">@topic.Title</div>
-                </a>
+            <a class="topicUnit" href="/Topic/Content/@topic.Id" target="_blank">
+                <img class="topicImage" src="@topic.Cover" />
+                <div class="topicBrief">
+                    @topic.Summary
+                </div>
+                <div class="topicTitle">@topic.Title</div>
+            </a>
 
-            }
         }
     }
+}
     
     
     

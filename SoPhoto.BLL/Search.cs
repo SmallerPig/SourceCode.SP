@@ -216,7 +216,10 @@ namespace SoPhoto.BLL
             string brief = string.Empty;
             string keyword = string.Empty;
             title = GetKeyWordsSplitBySpace(Words);
-
+            if(string.IsNullOrEmpty(title))
+            {
+                return null;
+            }
             QueryParser parse = new QueryParser(Lucene.Net.Util.Version.LUCENE_29, "Title", new Lucene.Net.Analysis.SimpleAnalyzer());
             Query query = parse.Parse(title);
             parse.SetDefaultOperator(QueryParser.Operator.OR);
