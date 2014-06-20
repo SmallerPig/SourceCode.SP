@@ -11,16 +11,16 @@
     function validateForm() {
         return $("#form1").validate({
             rules: {
-                //Address: { required: true },
             },
             messages: {
-                //Address: { required: "不能为空" },
             }
         }).form();
     };
     function doSubmit() {
-        if (validateForm()) {
-            $("#form1").submit();
+        if (simple.validator.validate() == true) {
+            if (ischeck) {
+                $("#form1").submit();
+            }
         }
     }
 </script>
@@ -28,12 +28,12 @@
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">用户名</div>
-            <input type="text" name="UserName" class="inputText" value="@Model.UserName" readonly="true" />
+            <input type="text" name="UserName" class="inputText" value="@Model.UserName" readonly="true" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
 
         <div class="contentItem">
             <div class="contentItemTitle">密码</div>
-            <input type="password" class="inputText" name="password" value="@Model.PassWord" />
+            <input type="password" class="inputText" name="password" value="@Model.PassWord" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
     </div>
     <div class="contentItemGroup">

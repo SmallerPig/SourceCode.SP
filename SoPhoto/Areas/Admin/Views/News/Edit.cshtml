@@ -13,17 +13,17 @@
     function validateForm() {
         return $("#form1").validate({
             rules: {
-                Title: { required: true },
             },
             messages: {
-                Title: { required: "不能为空" },
             }
         }).form();
     };
     function doSubmit() {
         if (validateForm()) {
             BindContent();
-            $("#form1").submit();
+            if (simple.validator.validate()) {
+                $("#form1").submit();
+            }
         }
     }
 </script>
@@ -31,7 +31,7 @@
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">标题</div>
-            <input type="text" class="inputText" name="Title" value="@Model.Title"/>
+            <input type="text" class="inputText" name="Title" value="@Model.Title" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem" complexcontent>
             <textarea id="articleContent" class="input_textarea" width="100%" height="300"></textarea>

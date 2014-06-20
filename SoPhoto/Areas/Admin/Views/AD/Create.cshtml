@@ -19,7 +19,9 @@
     };
     function doSubmit() {
         if (validateForm()) {
-            $("#form1").submit();
+            if (simple.validator.validate()) {
+                $("#form1").submit();
+            }
         }
     }
 </script>
@@ -27,7 +29,7 @@
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">广告连接地址</div>
-            <input type="text" class="inputText" name="LinkAddress" />
+            <input type="text" class="inputText" name="LinkAddress" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="tipItem">
             对于站内链接，可使用相对地址。<br />
@@ -51,7 +53,7 @@
                     });
                 </script>
                 <input id="Address_name" name="Address_name" style="display: none" value='' />
-                <input id="Address" name="Address" style="display: none" />
+                <input id="Address" name="Address" style="display: none" s-validator-rules="required" s-validator-onsucceed="" s-validator-onfail="alert('您还未上传图片');" />
                 @*<input type="text" class="inputText" value="这个input替换成上传控件" />*@
             </div>
 

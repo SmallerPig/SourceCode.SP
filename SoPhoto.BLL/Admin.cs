@@ -14,18 +14,19 @@ namespace SoPhoto.BLL
 
         }
 
-        public string Login(Entity.Admin admin)
+        public string Login(Entity.SP_Admin admin)
         {
             admin.Password = RY.Common.ASE.EncryptCode(admin.Password);
             return helper.Login(admin);
         }
 
-        public string ChangePassword(Entity.Admin admin)
+        public string ChangePassword(Entity.SP_Admin admin)
         {
+            admin.Password = RY.Common.ASE.EncryptCode(admin.Password);
             return helper.ChangePassword(admin);
         }
 
-        public Entity.Admin ChangePassword(string oldPassword, string newPassword)
+        public Entity.SP_Admin ChangePassword(string oldPassword, string newPassword)
         {
             oldPassword = RY.Common.ASE.EncryptCode(oldPassword);
             newPassword = RY.Common.ASE.EncryptCode(newPassword);
@@ -33,11 +34,16 @@ namespace SoPhoto.BLL
         }
 
 
-        public Entity.Admin GetAdmin()
+        public Entity.SP_Admin GetAdmin()
         {
             return helper.GetAdmin();
         }
 
 
+
+        public Entity.SP_Admin getAdmin()
+        {
+            return helper.getAdmin();
+        }
     }
 }

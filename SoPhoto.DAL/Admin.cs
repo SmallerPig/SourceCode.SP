@@ -15,31 +15,31 @@ namespace SoPhoto.DAL
 
         }
 
-        public string Login(Entity.Admin admin)
+        public string Login(Entity.SP_Admin admin)
         {
-            var result = from a in db.Admins
+            var result = from a in db.SP_Admins
                          where a.UserName == admin.UserName && a.Password == admin.Password
                          select a;
             return result.Any() ? "success" : "error";
         }
 
-        public string ChangePassword(Entity.Admin admin)
+        public string ChangePassword(Entity.SP_Admin admin)
         {
             db.Entry(admin).State = System.Data.EntityState.Modified;
             db.SaveChanges();
             return "success";
         }
 
-        public Entity.Admin GetAdmin()
+        public Entity.SP_Admin GetAdmin()
         {
-            return db.Admins.FirstOrDefault();
+            return db.SP_Admins.FirstOrDefault();
         }
 
 
 
-        public Entity.Admin ChangePassword(string oldpassword, string newpassword)
+        public Entity.SP_Admin ChangePassword(string oldpassword, string newpassword)
         {
-            var t = db.Admins.SingleOrDefault(items => items.UserName == "admin" && items.Password == oldpassword);
+            var t = db.SP_Admins.SingleOrDefault(items => items.UserName == "admin" && items.Password == oldpassword);
             if (t != null)
             {
                 t.Password = newpassword;
@@ -48,5 +48,10 @@ namespace SoPhoto.DAL
             return t;
         }
 
+
+        public Entity.SP_Admin getAdmin()
+        {
+            return db.SP_Admins.FirstOrDefault();
+        }
     }
 }

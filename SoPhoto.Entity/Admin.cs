@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SoPhoto.Entity
 {
-    public class Admin
+    public class SP_Admin
     {
 
 

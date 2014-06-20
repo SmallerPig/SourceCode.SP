@@ -10,6 +10,7 @@
 
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="/Content/ConsoleResource/src/Js/core.basic-1.1.js"></script>
+    <script src="~/Scripts/simple-validator.min.js"></script>
 </head>
 
     <body>
@@ -21,8 +22,8 @@
             <div id="loginInfor" style="text-align: center;line-height: 32px;color: red;"></div>
             <form id="form1" action="/admin/console/login" method="POST">
                 <div id="loginTitle">SoPhoto信息管理系统</div>
-                <input id="usernameInput" name="username" onkeydown="if (event.keyCode == 13) { doSubmit() }" type="text" class="inputText" lefticon />
-                <input id="passwordInput" name="password" onkeydown="if (event.keyCode == 13) { doSubmit() }" type="password" class="inputText" lefticon />
+                <input id="usernameInput" name="username" onkeydown="if (event.keyCode == 13) { doSubmit() }" type="text" class="inputText" lefticon s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
+                <input id="passwordInput" name="password" onkeydown="if (event.keyCode == 13) { doSubmit() }" type="password" class="inputText" lefticon s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
                 <a id="loginSubmit" href="javascript:" onclick="doSubmit()" class="inputButton" centericon></a>
             </form>
         </div>

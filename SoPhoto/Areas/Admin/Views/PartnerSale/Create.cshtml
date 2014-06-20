@@ -13,21 +13,16 @@
     function validateForm() {
         return $("#form1").validate({
             rules: {
-                PartnerId: { required: true },
-                PicCode: { required: true },
-                Price: { required: true,number:true },
             },
             messages: {
-                PartnerId: { required: "不能为空" },
-                PicCode: { required: "不能为空" },
-                Price: { required: "不能为空",number:"必须为数字" },
             }
         }).form();
     };
     function doSubmit() {
-        if (validateForm()) {
-            if (isAuthorCheck && isPicCodeCheck)
+        if (simple.validator.validate() == true) {
+            if (ischeck && isAuthorCheck && isPicCodeCheck) {
                 $("#form1").submit();
+            }
         }
     }
 
@@ -67,25 +62,25 @@
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">作者账号名</div>
-            <input type="text" id="UserName" name="UserName" onblur="checkAuthor();" class="inputText" />
+            <input type="text" id="UserName" name="UserName" onblur="checkAuthor();" class="inputText" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');"  />
         </div>
         <div id="tipitem_partnerid" style="display:none" class="tipItem">
             未发现该用户
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">图片编号</div>
-            <input type="text" id="PicCode" name="PicCode" onblur="checkPicCode();" class="inputText" />
+            <input type="text" id="PicCode" name="PicCode" onblur="checkPicCode();" class="inputText" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');"  />
         </div>
         <div id="tipitem_piccode" style="display:none" class="tipItem">
             未发现此图片
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">销售时间</div>
-            <input type="text" class="inputText" value="@DateTime.Now.ToString("yyyy-MM-dd")" name="SaleTime" />
+            <input type="text" class="inputText" value="@DateTime.Now.ToString("yyyy-MM-dd")" name="SaleTime" s-validator-rules="date" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">应得收益</div>
-            <input type="text" class="inputText" id="Price" name="Price" />
+            <input type="text" class="inputText" id="Price" name="Price" s-validator-rules="real" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>        
         <div class="tipItem">
             ”应得收益“需要填写数字，不可出现汉字等非数字字符<br />

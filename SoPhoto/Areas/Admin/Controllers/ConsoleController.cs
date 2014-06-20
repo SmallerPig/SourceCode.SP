@@ -32,7 +32,7 @@ namespace SoPhoto.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public JsonResult Login(Entity.Admin admin)
+        public JsonResult Login(Entity.SP_Admin admin)
         {
             string loginResult = adminHelper.Login(admin);
             if (loginResult != "success")

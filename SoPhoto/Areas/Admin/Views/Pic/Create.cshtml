@@ -63,7 +63,7 @@
                     });
                 </script>
                 <input id="Address_name" name="Address_name" style="display: none" value='' />
-                <input id="Address" name="Address" style="display: none" />
+                <input id="Address" name="Address" style="display: none" s-validator-rules="required" s-validator-onsucceed="" s-validator-onfail="alert('您还未上传图片');" />
                 @*<input type="text" class="inputText" value="这个input替换成上传控件" />*@
             </div>
         </div>
@@ -103,7 +103,7 @@
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">拍摄时间</div>
-            <input type="text" class="inputText" id="CreateDate" name="CreateDate" value="@DateTime.Now.ToString("yyy-MM-dd")" s-validator-rules="required|date" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
+            <input type="text" class="inputText" id="CreateDate" name="CreateDate" value="@DateTime.Now.ToString("yyy-MM-dd")" s-validator-rules="date" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="tipItem">
             以yyyy-mm-dd的格式填写，如：2014-05-08。

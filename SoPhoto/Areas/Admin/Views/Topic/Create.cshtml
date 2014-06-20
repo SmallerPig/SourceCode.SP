@@ -18,7 +18,7 @@
         }).form();
     };
     function doSubmit() {
-        if (validateForm()) {
+        if (simple.validator.validate() == true) {
             $("#form1").submit();
         }
     }
@@ -27,7 +27,7 @@
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">标题</div>
-            <input type="text" name="Title" class="inputText" />
+            <input type="text" name="Title" class="inputText" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">图片</div>
@@ -46,7 +46,7 @@
                     });
                 </script>
                 <input id="Cover_name" name="Cover_name" style="display: none" value='' />
-                <input id="Cover" name="Cover" style="display: none" />
+                <input id="Cover" name="Cover" style="display: none" s-validator-rules="required" s-validator-onsucceed="" s-validator-onfail="alert('您还未上传图片');" />
                 @*<input type="text" class="inputText" value="这个input替换成上传控件" />*@
             </div>
         </div>
@@ -55,14 +55,14 @@
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">简介</div>
-            <textarea class="inputText" name="summary"></textarea>
+            <textarea class="inputText" name="summary" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');"></textarea>
         </div>
     </div>
 
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">包含图片</div>
-            <textarea class="inputText" name="PicsCode"></textarea>
+            <textarea class="inputText" name="PicsCode" ></textarea>
         </div>
         <div class="tipItem">
             在此输入图片编号，多个图片编号之间以英文分号";"隔开。<br />

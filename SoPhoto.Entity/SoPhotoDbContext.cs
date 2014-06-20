@@ -46,7 +46,7 @@ namespace SoPhoto.Entity
 
 
 
-        public DbSet<Admin> Admins { get; set; }
+        public DbSet<SP_Admin> SP_Admins { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

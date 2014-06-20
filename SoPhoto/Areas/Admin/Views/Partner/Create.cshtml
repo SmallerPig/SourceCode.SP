@@ -9,8 +9,10 @@
 <script type="text/javascript">
     var ischeck = false;
     function doSubmit() {
-        if (ischeck) {
-            $("#form1").submit();
+        if (simple.validator.validate() == true) {
+            if (ischeck) {
+                $("#form1").submit();
+            }
         }
     }
     function checkUser() {
@@ -28,9 +30,12 @@
         {
             $("#tipitem_username").css({ "display": "none" });
             console.log("success");
+            $("#username").removeAttr("error");
+
             ischeck = true;
         } else {
             $("#tipitem_username").css({ "display": "block" });
+            $("#username").attr({ "error": "" });
             console.log("error");
             ischeck = false;
         }
@@ -41,14 +46,14 @@
     <div class="contentItemGroup">
         <div class="contentItem">
             <div class="contentItemTitle">用户名</div>
-            <input type="text" id="username" name="UserName" class="inputText" onblur="checkUser();" />
+            <input type="text" id="username" name="UserName" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" class="inputText" onblur="checkUser();" />
         </div>
-        <div id="tipitem_username" class="tipItem">
+        <div id="tipitem_username" style="display:none;" class="tipItem">
             用户名已被占用
         </div>
         <div class="contentItem">
             <div class="contentItemTitle">密码</div>
-            <input type="text" class="inputText" name="password" />
+            <input type="text" class="inputText" name="password" s-validator-rules="required" s-validator-onsucceed="this.removeAttribute('error');" s-validator-onfail="this.setAttribute('error','');" />
         </div>
     </div>
     <div class="contentItemGroup">
