@@ -10,11 +10,6 @@ namespace SoPhoto.Areas.Admin.Controllers
 {
     public class PicController : BaseController<Entity.SP_Pics>
     {
-        //
-        // GET: /Admin/Pic/
-        private BLL.SelectItem selectItemHelper = new BLL.SelectItem();
-        private BLL.SelectValue selectValueHelper = new BLL.SelectValue();
-        private BLL.EditType editTypeHelper = new BLL.EditType();
 
         public PicController()
         {
@@ -23,13 +18,7 @@ namespace SoPhoto.Areas.Admin.Controllers
 
         public override ActionResult Create()
         {
-            IEnumerable<Entity.SelectItem> items = selectItemHelper.GetList();
-            IList<Models.PicSelect> selects = items.Select(selectItem => new PicSelect { SelectItems = selectItem }).ToList();
-            PicModel model = new PicModel()
-            {
-                Selects = selects
-            };
-            return View(model);
+            return View();
         }
 
         [HttpPost]
@@ -72,44 +61,6 @@ namespace SoPhoto.Areas.Admin.Controllers
             {
                 BLL.SearchHelper.GetInstance().AddArticle(model.Id);
             }
-            //if (model.BaseCategory==2)
-            //{
-            //    string[] editType_strings = Request.Form["editType"].Split(',');
-            //    foreach (var editTypeString in editType_strings)
-            //    {
-            //        int editType = 0;
-            //        if (int.TryParse(editTypeString,out editType))
-            //        {
-            //            Entity.SP_EditType type = new Entity.SP_EditType()
-            //            {
-            //                PicId = model.Id,
-            //                Value = editType
-            //            };
-            //            editTypeHelper.Insert(type);
-            //        }
-            //    }
-            //}
-
-            //foreach (string key in Request.Form)
-            //{
-            //    if (key.StartsWith("Selects["))
-            //    {
-            //        var regex = new Regex(@"\d+");
-            //        int itemId =int.Parse(regex.Match(key).Value);
-            //        string[] valueStrings = Request.Form[key].Split(',');
-            //        foreach (var valueString in valueStrings)
-            //        {
-            //            var conditionId = int.Parse(valueString);
-            //            Entity.SelectValue value = new Entity.SelectValue()
-            //            {
-            //                PicId = model.Id,
-            //                ItemId = itemId,
-            //                ConditionId = conditionId
-            //            };
-            //            selectValueHelper.Insert(value);
-            //        }
-            //    }
-            //}
             return RedirectToAction("ConsoleList");
         }
 
@@ -127,47 +78,7 @@ namespace SoPhoto.Areas.Admin.Controllers
             {
                 BLL.SearchHelper.GetInstance().AddArticle(pic.Id);
             }
-            if (pic.BaseCategory == 2)
-            {
-                string[] editType_strings = Request.Form["editType"].Split(',');
-                foreach (var editTypeString in editType_strings)
-                {
-                    int editType = 0;
-                    if (int.TryParse(editTypeString, out editType))
-                    {
-                        Entity.SP_EditType type = new Entity.SP_EditType()
-                        {
-                            PicId = pic.Id,
-                            Value = editType
-                        };
-                        editTypeHelper.Insert(type);
-                    }
-                }
-            }
-
-            foreach (string key in Request.Form)
-            {
-                if (key.StartsWith("Selects["))
-                {
-                    var regex = new Regex(@"\d+");
-                    int itemId = int.Parse(regex.Match(key).Value);
-                    string[] valueStrings = Request.Form[key].Split(',');
-                    foreach (var valueString in valueStrings)
-                    {
-                        var conditionId = int.Parse(valueString);
-                        Entity.SelectValue value = new Entity.SelectValue()
-                        {
-                            PicId = pic.Id,
-                            ItemId = itemId,
-                            ConditionId = conditionId
-                        };
-                        selectValueHelper.Insert(value);
-                    }
-                }
-            }
         }
-
-
 
         public ActionResult ConsoleList(string keyword)
         {
@@ -239,45 +150,7 @@ namespace SoPhoto.Areas.Admin.Controllers
                 model.CreativeType = 4;
             }
             helper.Update(model);
-            //selectValueHelper.DeleteByPic(model.Id);
-            //editTypeHelper.DeleteByPicId(model.Id);
-            //if (model.BaseCategory == 2)
-            //{
-            //    string[] editType_strings = Request.Form["editType"].Split(',');
-            //    foreach (var editTypeString in editType_strings)
-            //    {
-            //        int editType = 0;
-            //        if (int.TryParse(editTypeString, out editType))
-            //        {
-            //            Entity.SP_EditType type = new Entity.SP_EditType()
-            //            {
-            //                PicId = model.Id,
-            //                Value = editType
-            //            };
-            //            editTypeHelper.Insert(type);
-            //        }
-            //    }
-            //}
-            //foreach (string key in Request.Form)
-            //{
-            //    if (key.StartsWith("Selects["))
-            //    {
-            //        var regex = new Regex(@"\d+");
-            //        int itemId = int.Parse(regex.Match(key).Value);
-            //        string[] valueStrings = Request.Form[key].Split(',');
-            //        foreach (var valueString in valueStrings)
-            //        {
-            //            var conditionId = int.Parse(valueString);
-            //            Entity.SelectValue value = new Entity.SelectValue()
-            //            {
-            //                PicId = model.Id,
-            //                ItemId = itemId,
-            //                ConditionId = conditionId
-            //            };
-            //            selectValueHelper.Insert(value);
-            //        }
-            //    }
-            //}
+
             if (model.IsLock)
             {
                 BLL.SearchHelper.GetInstance().RemoveArticle(model.Id);

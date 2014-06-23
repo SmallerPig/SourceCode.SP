@@ -14,8 +14,6 @@ namespace SoPhoto.Controllers
     {
         //
         // GET: /Pics/
-        private BLL.SelectItem selectItemHelper =new  BLL.SelectItem();
-        private BLL.SelectValue selectValueHelper = new BLL.SelectValue();
         private BLL.Pics helper = new BLL.Pics();
 
         protected int pageIndex = 1;
@@ -146,39 +144,6 @@ namespace SoPhoto.Controllers
         }
 
         
-        [HttpPost]
-        public ActionResult Search(string keyword, params int[] items)
-        {
-            List<Entity.SelectValue> values = new List<SelectValue>();
-            IEnumerable<Entity.SelectItem> selectItems = selectItemHelper.GetList();
-
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                
-            }
-            int requestCount = 0;
-            foreach (var item in selectItems)
-            {
-                if (Request.Form[item.Id.ToString()] != "0")
-                {
-                    requestCount ++;
-                    string[] conditionStrings = Request.Form[item.Id.ToString()].Split(',');
-                    IEnumerable<Entity.SelectValue> collects = selectValueHelper.GetByConditionArrary(conditionStrings);
-                    values.AddRange(collects);
-                }
-            }
-            IEnumerable<Entity.SP_Pics> piclist = helper.GetBySelectValue(values,requestCount);
-            IList<ColumnModel> column = selectItems.Select(selectItem => new ColumnModel { SelectItems = selectItem }).ToList();
-            SearchModel model = new SearchModel()
-            {
-                Column = column,
-                Pics = piclist
-            };
-
-
-            return View(model);
-        }
-
 
 
         public ActionResult Detail(int id)

@@ -174,10 +174,7 @@ namespace SoPhoto.BLL
             return helper.ConsoleList(p, pageSize);
         }
 
-        public IEnumerable<Entity.SP_Pics> GetBySelectValue(List<Entity.SelectValue> values,int count)
-        {
-            return helper.GetBySelectValue(values,count);
-        }
+
 
         public IList<Entity.SP_Pics> SearchByPicCode(string keyword)
         {

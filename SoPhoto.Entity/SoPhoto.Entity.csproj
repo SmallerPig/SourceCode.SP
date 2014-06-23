@@ -49,11 +49,6 @@
     <Compile Include="AD.cs" />
     <Compile Include="Admin.cs" />
     <Compile Include="Banner.cs" />
-    <Compile Include="CreateAddress.cs" />
-    <Compile Include="CreateLocation.cs" />
-    <Compile Include="EditType.cs" />
-    <Compile Include="Format.cs" />
-    <Compile Include="Hue.cs" />
     <Compile Include="News.cs" />
     <Compile Include="Partner.cs" />
     <Compile Include="PartnerSale.cs" />
@@ -63,9 +58,6 @@
     <Compile Include="Pics.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SceneryWay.cs" />
-    <Compile Include="SelectCondition.cs" />
-    <Compile Include="SelectItem.cs" />
-    <Compile Include="SelectValue.cs" />
     <Compile Include="SoPhotoDbContext.cs" />
     <Compile Include="Style.cs" />
     <Compile Include="Topic.cs" />

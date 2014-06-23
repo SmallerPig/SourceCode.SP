@@ -27,23 +27,10 @@ namespace SoPhoto.Entity
 
         public DbSet<SP_News> SP_News { get; set; }
 
-        public DbSet<SP_EditType> EditType { get; set; }
 
         public DbSet<Partner> Partner { get; set; }
 
         public DbSet<PartnerSale> PartnerSale { get; set; }
-
-
-
-        public DbSet<SelectCondition> SelectCondition { get; set; }
-
-        public DbSet<SelectItem> SelectItem { get; set; }
-
-        public DbSet<SelectValue> SelectValue { get; set; }
-
-
-
-
 
 
         public DbSet<SP_Admin> SP_Admins { get; set; }

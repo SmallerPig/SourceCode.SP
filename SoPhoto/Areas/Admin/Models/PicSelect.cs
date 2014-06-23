@@ -9,15 +9,15 @@ namespace SoPhoto.Areas.Admin.Models
     public class PicSelect
     {
         
-        public Entity.SelectItem SelectItems { get; set; }
+        //public Entity.SelectItem SelectItems { get; set; }
 
-        public IEnumerable<Entity.SelectCondition> Conditions {
-            get
-            {
-                BLL.SelectCondition helper = new SelectCondition();
-                return helper.ListByItem(SelectItems.Id);
-            }
-        } 
+        //public IEnumerable<Entity.SelectCondition> Conditions {
+        //    get
+        //    {
+        //        BLL.SelectCondition helper = new SelectCondition();
+        //        return helper.ListByItem(SelectItems.Id);
+        //    }
+        //} 
 
 
     }

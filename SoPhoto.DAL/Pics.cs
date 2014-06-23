@@ -76,16 +76,16 @@ namespace SoPhoto.DAL
             return db.SP_Pics.OrderByDescending(item => item.Id).Skip(p).Take(pageSize).ToList();
         }
 
-        public IEnumerable<SP_Pics> GetBySelectValue(List<Entity.SelectValue> values,int count)
-        {
-            var pics = from sv in values
-                group sv by sv.PicId
-                into v
-                where v.Count()>=count
-                join p in db.SP_Pics on v.Key equals p.Id
-                select p;
-            return pics;
-        }
+        //public IEnumerable<SP_Pics> GetBySelectValue(List<Entity.SelectValue> values,int count)
+        //{
+        //    var pics = from sv in values
+        //        group sv by sv.PicId
+        //        into v
+        //        where v.Count()>=count
+        //        join p in db.SP_Pics on v.Key equals p.Id
+        //        select p;
+        //    return pics;
+        //}
 
         public IList<SP_Pics> SearchByPicCode(string keyword)
         {

@@ -183,8 +183,6 @@
     <Compile Include="Areas\Admin\Controllers\PartnerController.cs" />
     <Compile Include="Areas\Admin\Controllers\PartnerSaleController.cs" />
     <Compile Include="Areas\Admin\Controllers\PicController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SelectConditionController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SelectItemController.cs" />
     <Compile Include="Areas\Admin\Controllers\TopicController.cs" />
     <Compile Include="Areas\Admin\Models\PicModel.cs" />
     <Compile Include="Areas\Admin\Models\PicSelect.cs" />
@@ -199,7 +197,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Home.cs" />
-    <Compile Include="Models\ColumnModel.cs" />
     <Compile Include="Models\NewsDetail.cs" />
     <Compile Include="Models\NewsIndex.cs" />
     <Compile Include="Models\PartnerData.cs" />
@@ -1180,11 +1177,6 @@
     <Content Include="Content\ConsoleResource\src\css\iframeContent.css" />
     <Content Include="Content\ConsoleResource\src\css\login.css" />
     <Content Include="Content\ConsoleResource\src\css\main.css" />
-    <Content Include="Content\ConsoleResource\src\css\newsContent.css" />
-    <Content Include="Content\ConsoleResource\src\css\newsList.css" />
-    <Content Include="Content\ConsoleResource\src\css\partnerData.css" />
-    <Content Include="Content\ConsoleResource\src\css\partnerLogin.css" />
-    <Content Include="Content\ConsoleResource\src\css\partnerPasswordChange.css" />
     <Content Include="Content\ConsoleResource\src\js\component_tree.js" />
     <Content Include="Content\ConsoleResource\src\js\core.basic-1.1.js" />
     <Content Include="Content\ConsoleResource\src\js\List.js" />
@@ -1348,7 +1340,9 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\simple-validator.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
