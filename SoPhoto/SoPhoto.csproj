@@ -1209,12 +1209,17 @@
     <Content Include="Content\src\css\imageSearch.css" />
     <Content Include="Content\src\css\newsContent.css" />
     <Content Include="Content\src\css\newsList.css" />
+    <Content Include="Content\src\css\oldbrowser.css" />
     <Content Include="Content\src\css\partnerData.css" />
     <Content Include="Content\src\css\partnerLogin.css" />
     <Content Include="Content\src\css\partnerPasswordChange.css" />
     <Content Include="Content\src\css\pub.css" />
     <Content Include="Content\src\css\topicContent.css" />
     <Content Include="Content\src\css\topicList.css" />
+    <Content Include="Content\src\img\browsers_Chrome.gif" />
+    <Content Include="Content\src\img\browsers_FireFox.gif" />
+    <Content Include="Content\src\img\browsers_Opera.gif" />
+    <Content Include="Content\src\img\browsers_Safari.gif" />
     <Content Include="Content\src\js\home.js" />
     <Content Include="Content\src\js\imageSearch.js" />
     <Content Include="Content\src\media\bg1.png" />
@@ -1322,7 +1327,9 @@
     <Content Include="Areas\Admin\Views\PartnerSale\Create.cshtml" />
     <Content Include="Areas\Admin\Views\PartnerSale\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Admin\ChangePassword.cshtml" />
+    <Content Include="Content\src\img\Thumbs.db" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="oldbrowser.html" />
     <Content Include="readme.txt" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

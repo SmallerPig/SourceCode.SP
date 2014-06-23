@@ -1,0 +1,28 @@
+*{ outline:none;}
+div{ position:relative;}
+a *{ border:0px none;}
+a{ text-decoration:none;}
+
+input{ font-family:inherit; font-size:12px; color:#595959;}
+select{ font-family:inherit; font-size:12px; color:#595959;}
+textarea{ resize:none;}
+
+body { padding:0px; margin:0px; color:#595959; font-size:12px; font-family:宋体;background:#f2f2f2; line-height:140%;}
+
+#loginAreaWrapper { position:absolute; width:300px; height:400px; left:50%; top:50%; margin-left:-150px; margin-top:-200px; border:1px solid #d9d9d9; background:#ffffff;}
+
+#mark{ font-family:Arial; font-size:100px; color:#f00; text-align:center; font-weight:bolder; line-height:120%; margin-top:20px;}
+
+#tips{ color:#f00; font-size:12px; text-align:center;}
+
+.browserDownload{ width:95px; padding:5px 20px;padding-left:65px; height:32px; background-repeat:no-repeat; background-position:20px 5px; line-height:120%; margin:0px auto 0px auto; display:block; }
+.browserDownload:hover{ background-color:#e3e3e3;}
+#Chrome{ background-image: url(../img/browsers_Chrome.gif); margin-top:15px;}
+#FireFox{ background-image: url(../img/browsers_FireFox.gif);}
+#Safari{ background-image: url(../img/browsers_Safari.gif);}
+#Opera{ background-image: url(../img/browsers_Opera.gif);}
+
+.browserDownload .mainTitle{ color:#333333;}
+.browserDownload .subtip{ color:#808080;}
+
+
