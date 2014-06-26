@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "专题";
+    ViewBag.Title = "Topics";
     ViewBag.TopicNav = "Current";
 }
 @section Head{
@@ -41,16 +41,16 @@
                                     <div class="topicImageInfoWrapper">
                                         <div class="topicImageInfoTitle">@p.Title</div>
                                         <div class="topicImageInfoOther">
-                                            <span class="markText">摄影师：</span><span class="contentText">@p.Title</span>
+                                            <span class="markText">By:</span><span class="contentText">@p.Title</span>
                                         </div>
                                         <div class="topicImageInfoOther">
-                                            <span class="markText">类　别：</span><span class="contentText">@(p.BaseCategory == 1 ? "创意类" : "编辑类")</span>
+                                            <span class="markText">Type:</span><span class="contentText">@(p.BaseCategory == 1 ? "创意类" : "编辑类")</span>
                                         </div>
                                         <div class="topicImageInfoOther">
-                                            <span class="markText">授　权：</span><span class="contentText">@(p.CreativeType == 1 ? "有" : "无")授权</span>
+                                            <span class="markText">Authorizion:</span><span class="contentText">@p.Affirming</span>
                                         </div>
                                         <div class="topicImageInfoOther">
-                                            <span class="markText">编　号：</span><span class="contentText">@p.PicCode</span>
+                                            <span class="markText">Number:</span><span class="contentText">@p.PicCode</span>
                                         </div>
                                     </div>
                                 </a>
@@ -66,12 +66,12 @@
 
         </div>
         <div id="topicImagePageInfoArea">
-            <a id="gotoFirstPage" href="#">第一页</a>
-            <a id="gotoPrevPage" href="#">&lt;上一页</a>
+            <a id="gotoFirstPage" href="#">First Page</a>
+            <a id="gotoPrevPage" href="#">&lt;Previous</a>
             <input id="currentPageInput" value="1" />
             <span id="totalPage">/ 1</span>
-            <a id="gotoNextPage" href="#">下一页&gt;</a>
-            <a id="gotoLastPage" href="#">尾页</a>
+            <a id="gotoNextPage" href="#">Next&gt;</a>
+            <a id="gotoLastPage" href="#">Last Page</a>
         </div>
     </div>
 </div>

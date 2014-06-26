@@ -1,6 +1,6 @@
 ﻿@{
     //Layout = null;
-    ViewBag.Title = "搜索图片";
+    ViewBag.Title = "Picture Seach";
     ViewBag.PicsNav = "Current";
 }
 
@@ -18,7 +18,7 @@
             <tr>
                 <td id="searchArea">
                     <div id="searchInputArea">
-                        <input class="inputText" id="searchInputText" name="keyword" placeholder="输入关键词或图片编号" onkeydown="if (event.keyCode == 13) { Submit() }" />
+                        <input class="inputText" id="searchInputText" name="keyword" placeholder="Search for keywords or pictures number" onkeydown="if (event.keyCode == 13) { Submit() }" />
                     </div>
                     <div id="searchOptionArea">
                         <div class="searchOptionItem" opened>
@@ -432,16 +432,16 @@
                                         <div class="searchResultInfoWrapper">
                                             <div class="searchResultInfoTitle">@pic.Title</div>
                                             <div class="searchResultInfoOther">
-                                                <span class="markText">摄影师：</span><span class="contentText">@pic.Author</span>
+                                                <span class="markText">By:</span><span class="contentText">@pic.Author</span>
                                             </div>
                                             <div class="searchResultInfoOther">
-                                                <span class="markText">类　别：</span><span class="contentText">@(pic.BaseCategory==1?"创意类":"编辑类")</span>
+                                                <span class="markText">Type:</span><span class="contentText">@(pic.BaseCategory==1?"创意类":"编辑类")</span>
                                             </div>
                                             <div class="searchResultInfoOther">
-                                                <span class="markText">授　权：</span><span class="contentText">@(pic.CreativeType==1?"有":"无")授权</span>
+                                                <span class="markText">Authorizion:</span><span class="contentText">@pic.Affirming</span>
                                             </div>
                                             <div class="searchResultInfoOther">
-                                                <span class="markText">编　号：</span><span class="contentText">@pic.PicCode</span>
+                                                <span class="markText">Number:</span><span class="contentText">@pic.PicCode</span>
                                             </div>
                                         </div>
                                     </a>
@@ -451,12 +451,12 @@
                         }
                     </div>
                     <div id="searchResultPageInfoArea">
-                        <a id="gotoFirstPage" href="#">第一页</a>
-                        <a id="gotoPrevPage" href="@ViewData["perPage"]">&lt;上一页</a>
+                        <a id="gotoFirstPage" href="#">First Page</a>
+                        <a id="gotoPrevPage" href="@ViewData["perPage"]">&lt;Previous</a>
                         <input id="currentPageInput" value="@ViewData["pageIndex"]" onkeydown="if (event.keyCode == 13) { jumpPage() }" />
                         <span id="totalPage">/ @ViewData["pageCount"]</span>
-                        <a id="gotoNextPage" href="@ViewData["nextPage"]">下一页&gt;</a>
-                        <a id="gotoLastPage" href="#">尾页</a>
+                        <a id="gotoNextPage" href="@ViewData["nextPage"]">Next&gt;</a>
+                        <a id="gotoLastPage" href="#">Last Page</a>
                     </div>
                 </td>
             </tr>

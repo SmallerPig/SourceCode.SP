@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "专题";
+    ViewBag.Title = "Topics";
     ViewBag.TopicNav = "Current";
 
 }
@@ -29,12 +29,12 @@
     
 </div>
 <div id="pageInfoArea">
-    <a id="gotoFirstPage" href="/news/index">第一页</a>
-    <a id="gotoPrevPage" href="@ViewData["perPage"]">&lt;上一页</a>
+    <a id="gotoFirstPage" href="/news/index">First Page</a>
+    <a id="gotoPrevPage" href="@ViewData["perPage"]">&lt;Previous</a>
     <input id="currentPageInput" value="@ViewData["pageIndex"]" onkeydown="if (event.keyCode == 13) { jumpPage() }" />
     <span id="totalPage">/ @ViewData["pageCount"]</span>
-    <a id="gotoNextPage" href="@ViewData["nextPage"]">下一页&gt;</a>
-    <a id="gotoLastPage" href="/news/index?pageIndex=@ViewData["pageCount"]">尾页</a>
+    <a id="gotoNextPage" href="@ViewData["nextPage"]">Next&gt;</a>
+    <a id="gotoLastPage" href="/news/index?pageIndex=@ViewData["pageCount"]">Last Page</a>
 </div>
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
     <script>

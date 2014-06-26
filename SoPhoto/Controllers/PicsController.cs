@@ -150,7 +150,7 @@ namespace SoPhoto.Controllers
         {
             Entity.SP_Pics pic = helper.GetById(id);
             IEnumerable<Entity.SP_Pics> RelatedPic = BLL.SearchHelper.GetInstance()
-                    .SearchIndex(pic.KeyWords.Replace(";","+"), pageSize, pageIndex);
+                    .SearchIndex(pic.KeyWords.Replace(";","+"), 9, pageIndex);
             ViewBag.Related = RelatedPic;
             return View(pic);
         }

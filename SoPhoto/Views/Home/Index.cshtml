@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "首页";
+    ViewBag.Title = "Home";
     ViewBag.HomeNav = "Current";
 }
 @section Head
@@ -13,11 +13,11 @@
 
 <div class="contentRow">
     <div id="pictureSearchArea">
-        <div id="pictureSearchAreaTitle">图片搜索</div>
+        <div id="pictureSearchAreaTitle">Pictures Search</div>
         <div id="pictureSearchAreaContentWrapper">
-            <input id="pictureSearchInput" onkeydown="if (event.keyCode == 13) { doSubmit() }" class="inputText" placeholder="输入关键词或图片编号" />
+            <input id="pictureSearchInput" onkeydown="if (event.keyCode == 13) { doSubmit() }" class="inputText" placeholder="Search for keywords or pictures number" />
             <a id="pictureSearchSubmit" href="javascript:"></a>
-            <a id="pictureSearchLink" href="/Pics/Search">高级搜索</a>
+            <a id="pictureSearchLink" href="/Pics/Search">Advanced Search</a>
         </div>
     </div>
 </div>
@@ -44,8 +44,8 @@
     </div>
     <div id="newsArea">
         <div class="titleArea">
-            <div class="titleText">新闻与活动</div>
-            <a class="moreLink" href="/news/index">更多&gt;</a>
+            <div class="titleText">News & Events</div>
+            <a class="moreLink" href="/news/index">More&gt;</a>
         </div>
         <div class="contentArea">
             @{
@@ -65,8 +65,8 @@
 <div class="contentRow">
     <div id="topicArea">
         <div class="titleArea">
-            <div class="titleText">专题</div>
-            <a class="moreLink" href="/topic">更多&gt;</a>
+            <div class="titleText">Topics</div>
+            <a class="moreLink" href="/topic">More&gt;</a>
         </div>
         <div class="contentArea">
             @{

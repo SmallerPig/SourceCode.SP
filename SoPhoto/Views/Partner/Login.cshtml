@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "合作摄影师登录";
+    ViewBag.Title = "Cooperative Photographer";
 }
 @section Head{
     <link href="~/Content/src/css/partnerLogin.css" rel="stylesheet" />
@@ -10,7 +10,7 @@
 
 <div id="loginArea">
     <form id="form1">
-        <div id="loginTitle">合作摄影师登录</div>
+        <div id="loginTitle">Cooperative Photographer Login</div>
         <input class="inputText" id="loginName" name="UserName" />
         <input class="inputText" id="loginPassword" name="PassWord" type="password" />
         <a id="loginSubmit" href="Javascript:Submit()"></a>
@@ -23,7 +23,7 @@
             var username = $("#loginName").val().trim();
             var password = $("#loginPassword").val().trim();
             if (username == "" || password == "") {
-                alert("请将信息填写完整");
+                alert("complete your information");
                 return;
             }
 
@@ -37,7 +37,7 @@
                 if (e == "success") {
                     window.location.replace("/Partner/Data");
                 } else {
-                    alert("用户名或密码错误！");
+                    alert("wrong username or password!");
                 }
             };
 
