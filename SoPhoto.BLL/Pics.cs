@@ -146,7 +146,7 @@ namespace SoPhoto.BLL
 
         private string CreateCode(Entity.SP_Pics t,int index=0)
         {
-            return System.DateTime.Now.ToString("yyMMddmmssfff");
+            return System.DateTime.Now.ToString("yyMMddhhmmssfff");
         }
 
         public void Restore(Entity.SP_Pics t)

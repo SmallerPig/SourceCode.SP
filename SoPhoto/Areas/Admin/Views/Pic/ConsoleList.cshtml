@@ -43,7 +43,7 @@
                                 <td>@Picse.PicCode</td>
                                 <td>@(Picse.IsLock?"是":"否")</td>
                                 <td leftalign>@Picse.Title</td>
-                                <td><a href="Edit/@Picse.Id" class="tableListItemEditIcon"></a></td>
+                                <td><a href="Edit/@(Picse.Id)?pageIndex=@Request.QueryString["pageIndex"]" class="tableListItemEditIcon"></a></td>
                                 <td class="remove delete"><a href="JavaScript:" data="@Picse.Id" operatingtype="delete" class="tableListItemDeleteIcon"></a></td>
                             </tr>
                         }

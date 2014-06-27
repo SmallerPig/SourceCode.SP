@@ -17,7 +17,7 @@ namespace SoPhoto.Controllers
         private BLL.Pics helper = new BLL.Pics();
 
         protected int pageIndex = 1;
-        protected int pageSize = 20;
+        protected int pageSize = 21;
         protected int count = 0;
         protected int pageCount = 1;
         protected string perPage = "";

@@ -13,6 +13,7 @@ namespace SoPhoto.Areas.Admin.Controllers
 
         public PicController()
         {
+            pageSize = 50;
             helper = new BLL.Pics();
         }
 
@@ -95,9 +96,9 @@ namespace SoPhoto.Areas.Admin.Controllers
         {
             if (index == 0)
             {
-                return System.DateTime.Now.ToString("yyMMddmmssff") + index;
+                return System.DateTime.Now.ToString("yyMMddhhmmssff") + index;
             }
-            return System.DateTime.Now.ToString("yyMMddmmssfff");
+            return System.DateTime.Now.ToString("yyMMddhhmmssfff");
         }
 
         public ActionResult ConsoleList(string keyword)
@@ -160,8 +161,9 @@ namespace SoPhoto.Areas.Admin.Controllers
 
 
         [HttpPost]
-        public ActionResult Edit(Entity.SP_Pics model)
+        public ActionResult Edit(Entity.SP_Pics model,int pageIndex=1)
         {
+
             model.Class_Edit = Request.Form["Class_Edit"];
             model.Class_Age = Request.Form["class_age"];
             model.Cover =CreateCover(model.Address);
@@ -180,7 +182,7 @@ namespace SoPhoto.Areas.Admin.Controllers
                 //BLL.SearchHelper.GetInstance().RemoveArticle(model.Pic.Id);
                 BLL.SearchHelper.GetInstance().AddArticle(model.Id);
             }
-            return RedirectToAction("ConsoleList");
+            return RedirectToAction("ConsoleList", new { pageIndex=pageIndex});
         }
 
         public override JsonResult Delete(int id)
