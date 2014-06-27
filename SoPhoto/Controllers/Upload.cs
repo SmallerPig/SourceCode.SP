@@ -76,6 +76,7 @@ namespace SoPhoto.Controllers
                         entry = zis.GetNextEntry();
                     }
                 }
+                HttpContext.Session.Timeout = 600;
                 Session["filenameStrings"] = filenameStrings;
                 return "/Images/" + string.Format("{0:yyyyMM}", dateTime) + "/" + datetimestring + "_" + index + "." + fileExtent;
             }

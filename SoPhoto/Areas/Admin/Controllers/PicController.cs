@@ -48,9 +48,9 @@ namespace SoPhoto.Areas.Admin.Controllers
                         string address = fileName + "_" + i + "." + extent;
                         model.Address = address;
                         model.Cover = CreateCover(address);
-                        model.Title = filenameStrings[i];
+                        model.Title = GetFileName(filenameStrings[i],extent);
                         model.IsLock = true;
-                        Insert(model);
+                        Insert(model,i);
                     }                    
                 }
                 return RedirectToAction("ConsoleList");
@@ -64,6 +64,17 @@ namespace SoPhoto.Areas.Admin.Controllers
             return RedirectToAction("ConsoleList");
         }
 
+        private string GetFileName(string p, string extent)
+        {
+            int indexofX = p.LastIndexOf('/');
+            indexofX = indexofX <= 0 ? 0 : indexofX;
+            int indexofdot = p.LastIndexOf('.');
+            int count = indexofX == 0 ? indexofdot - indexofX : indexofdot - indexofX - 1;
+            int startindex = indexofX == 0 ? 0 : indexofX + 1;
+            string result = p.Substring(startindex, count);
+            return result ;
+        }
+
         string CreateCover(string address)
         {
             string datastring = address.Substring(0, address.LastIndexOf('.'));
@@ -71,13 +82,22 @@ namespace SoPhoto.Areas.Admin.Controllers
             return result;
         }
 
-        private void Insert(Entity.SP_Pics pic)
+        private void Insert(Entity.SP_Pics pic,int index)
         {
+            pic.PicCode = CreateCode(index);
             pic = helper.Insert(pic);
-            if (!pic.IsLock)
+            //if (!pic.IsLock)
+            //{
+            //    BLL.SearchHelper.GetInstance().AddArticle(pic.Id);
+            //}
+        }
+        private string CreateCode(int index = 0)
+        {
+            if (index == 0)
             {
-                BLL.SearchHelper.GetInstance().AddArticle(pic.Id);
+                return System.DateTime.Now.ToString("yyMMddmmssff") + index;
             }
+            return System.DateTime.Now.ToString("yyMMddmmssfff");
         }
 
         public ActionResult ConsoleList(string keyword)

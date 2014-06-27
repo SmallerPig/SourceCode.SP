@@ -123,7 +123,10 @@ namespace SoPhoto.BLL
         public Entity.SP_Pics Insert(Entity.SP_Pics t)
         {
             t.KeyWords = ProcessKeyWord(t.KeyWords);
-            t.PicCode = CreateCode(t);
+            if (string.IsNullOrEmpty(t.PicCode))
+            { 
+                t.PicCode = CreateCode(t);            
+            }
             return helper.Insert(t);
         }
 
@@ -141,10 +144,8 @@ namespace SoPhoto.BLL
             return p;
         }
 
-        private string CreateCode(Entity.SP_Pics t)
+        private string CreateCode(Entity.SP_Pics t,int index=0)
         {
-            string firstCode = t.BaseCategory.ToString();
-            string secondCode = t.BaseCategory == 1 ? t.CreativeType.ToString() : "0";
             return System.DateTime.Now.ToString("yyMMddmmssfff");
         }
 

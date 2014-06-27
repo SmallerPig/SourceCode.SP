@@ -162,10 +162,14 @@
             <div class="contentItemTitle">编辑类子类（多选）</div>
             <div class="selectWrapper">
                 @{
-                    List<string> editTypes = Model.Class_Edit.Split(',').ToList();
-                }
-                
-
+                    List<string> editTypes;
+                    if (!string.IsNullOrEmpty(Model.Class_Edit)) {
+                        editTypes = Model.Class_Edit.Split(',').ToList();
+                    }else
+                    {
+                        editTypes = new List<string>() { "" };
+                    }
+                }              
                 <label class="selectItem">
                     <input type="checkbox" name="Class_Edit" class="selectItemInput" value="1" @(editTypes.Contains("1") ? "checked" : "") />
                     <span class="selectItemInputMarker"></span>
@@ -580,6 +584,10 @@
         </div>
         <div class="contentItem">
             @{
+                if (string.IsNullOrEmpty(Model.Class_Age))
+                {
+                    Model.Class_Age = "";
+                }                    
                 IList<string> ages = Model.Class_Age.Split(',').ToList();
             }
             
