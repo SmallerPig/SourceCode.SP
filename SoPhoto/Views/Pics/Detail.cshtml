@@ -14,6 +14,9 @@
 <body>
 
     <div id="contentArea">
+        @{
+            if(Model!=null)
+            {
         <div id="contentLeftArea">
             <div id="imageArea">
                 <div id="imageWrapper" style="background-image:url('@Html.Raw(Model.Address)');"></div>
@@ -132,7 +135,14 @@
                     @Model.UseAndBuy
                 </div>
             </div>
-        </div>
+        </div>                
+            }
+            else
+            {
+                <h3>未查找到该图片或已删除</h3>
+            }
+        }
+
     </div>
 
 </body>

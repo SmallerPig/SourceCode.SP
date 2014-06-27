@@ -149,9 +149,13 @@ namespace SoPhoto.Controllers
         public ActionResult Detail(int id)
         {
             Entity.SP_Pics pic = helper.GetById(id);
-            IEnumerable<Entity.SP_Pics> RelatedPic = BLL.SearchHelper.GetInstance()
-                    .SearchIndex(pic.KeyWords.Replace(";","+"), pageSize, pageIndex);
-            ViewBag.Related = RelatedPic;
+            if(pic!=null)
+            {
+                IEnumerable<Entity.SP_Pics> RelatedPic = BLL.SearchHelper.GetInstance()
+                        .SearchIndex(pic.KeyWords.Replace(";","+"), pageSize, pageIndex);
+                ViewBag.Related = RelatedPic;
+            }
+
             return View(pic);
         }
 
@@ -159,6 +163,12 @@ namespace SoPhoto.Controllers
         public ActionResult PicCode(string code)
         {
             Entity.SP_Pics pic = helper.GetByCode(code);
+            if (pic != null)
+            {
+                IEnumerable<Entity.SP_Pics> RelatedPic = BLL.SearchHelper.GetInstance()
+                        .SearchIndex(pic.KeyWords.Replace(";", "+"), pageSize, pageIndex);
+                ViewBag.Related = RelatedPic;
+            }
             return View(pic);
         }
 
