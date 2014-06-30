@@ -152,7 +152,7 @@ namespace SoPhoto.Controllers
             if(pic!=null)
             {
                 IEnumerable<Entity.SP_Pics> RelatedPic = BLL.SearchHelper.GetInstance()
-                        .SearchIndex(pic.KeyWords.Replace(";","+"), pageSize, pageIndex);
+                        .SearchIndex(pic.KeyWords.Replace(";","+"), 9, pageIndex);
                 ViewBag.Related = RelatedPic;
             }
 
@@ -166,7 +166,7 @@ namespace SoPhoto.Controllers
             if (pic != null)
             {
                 IEnumerable<Entity.SP_Pics> RelatedPic = BLL.SearchHelper.GetInstance()
-                        .SearchIndex(pic.KeyWords.Replace(";", "+"), pageSize, pageIndex);
+                        .SearchIndex(pic.KeyWords.Replace(";", "+"), 9, pageIndex);
                 ViewBag.Related = RelatedPic;
             }
             return View(pic);
