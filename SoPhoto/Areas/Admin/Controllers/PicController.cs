@@ -46,7 +46,7 @@ namespace SoPhoto.Areas.Admin.Controllers
                     for (int i = 0; i < count; i++)
                     {
                         string extent = RY.Common.DirectoryAndFile.GetFileExt(filenameStrings[i]);
-                        string address = fileName + "_" + i + "." + extent;
+                        string address = fileName + "w_" + i + "." + extent;
                         model.Address = address;
                         model.Cover = CreateCover(address);
                         model.Title = GetFileName(filenameStrings[i],extent);

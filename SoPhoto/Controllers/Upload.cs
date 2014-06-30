@@ -11,6 +11,9 @@ namespace SoPhoto.Controllers
 {
     public class UploadController : Controller
     {
+
+        string watermark = "/content/src/img/sophoto_logo.png";
+        string waterlogofile;
         //
         // GET: /Upload/
         [HttpPost]
@@ -34,10 +37,12 @@ namespace SoPhoto.Controllers
             string filenewname = datetimestring +"."+ fileExtent;
             string fullPath = this.Request.PhysicalApplicationPath + directory + "/";
             string fullname = fullPath + filenewname;
+            watermark = this.Request.PhysicalApplicationPath + watermark;
+
 
             // 保存位置（服务器地址+文件夹地址+文件名）
             file.SaveAs(fullname);
-            string coverName = fullPath + datetimestring + "_Cover" + "." + fileExtent;
+            string coverName = fullPath + datetimestring + "w_Cover" + "." + fileExtent;
 
             if (fileExtent.ToLower()=="zip")
             {
@@ -55,7 +60,7 @@ namespace SoPhoto.Controllers
                             string title = GetFileName(entry.Name,extent);
                             filenameStrings.Add(title);
                             string address = fullPath + datetimestring + "_" + index + "." + extent;
-                            string cover = fullPath + datetimestring + "_" + index+"_Cover" + "." + extent;
+                            string cover = fullPath + datetimestring + "w_" + index+"_Cover" + "." + extent;
                             FileStream writer = System.IO.File.Create(address);
                             //解压后的文件
                             int bufferSize = 1024*2; //缓冲区大小
@@ -69,8 +74,10 @@ namespace SoPhoto.Controllers
                             }
                             writer.Close();
                             writer.Dispose();
+                            waterlogofile = fullPath + datetimestring + "w_" + index + "." + extent;
                             RY.Common.ImageHelp.LocalImage2Thumbs(address, cover, 256, 256, "WH");
                             index++;
+                            RY.Common.ImageHelp.AddImageSignPic(address, waterlogofile, watermark, 5, 100, 10);
                         }
                         #endregion
                         entry = zis.GetNextEntry();
@@ -81,7 +88,11 @@ namespace SoPhoto.Controllers
                 return "/Images/" + string.Format("{0:yyyyMM}", dateTime) + "/" + datetimestring + "_" + index + "." + fileExtent;
             }
             RY.Common.ImageHelp.LocalImage2Thumbs(fullname, coverName, 256, 256, "WH");
-            return "/Images/" + string.Format("{0:yyyyMM}", dateTime) + "/" + filenewname;
+
+            waterlogofile = fullPath + datetimestring + "w." + fileExtent;
+            RY.Common.ImageHelp.AddImageSignPic(fullname, waterlogofile, watermark, 5, 100, 10);
+
+            return "/Images/" + string.Format("{0:yyyyMM}", dateTime) + "/" + datetimestring + "w." + fileExtent; ;
         }
 
         private string GetFileName(string p, string extent)
